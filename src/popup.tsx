@@ -1,22 +1,13 @@
-import { useState } from "react"
-
+import {
+  RouterProvider
+} from "react-router-dom";
+import router from "~router"
+import "./style.css"
 function IndexPopup() {
-  const [data, setData] = useState("")
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
-      <h1>
-        Welcome to your <a href="https://www.plasmo.com">Plasmo</a> Extension!
-      </h1>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <footer>Crafted by @PlamoHQ</footer>
-    </div>
-  )
+  // 设置整个宽度为 380px
+  return <div className="w-96 h-[37rem] bg-dark overflow-y-hidden p-3">
+    <RouterProvider router={router} />
+  </div>
 }
 
 export default IndexPopup
