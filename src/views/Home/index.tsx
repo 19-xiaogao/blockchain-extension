@@ -49,7 +49,7 @@ export default function Home() {
                     <span className="text-white mr-2">Mainnet</span>
                     <span className="w-2 h-2 bg-green rounded-full"></span>
                 </div>
-                <SetOutline color="#848587" className="text-xl cursor-pointer hover:text-white" />
+                <SetOutline color="#848587" className="text-2xl cursor-pointer hover:text-white" />
             </div>
         </div>
         <TabBar className="">
