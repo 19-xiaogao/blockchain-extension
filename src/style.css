@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.adm-tab-bar-item-active{
+    color: #fff;
+}

@@ -14,9 +14,6 @@ dependencies:
   antd-mobile:
     specifier: ^5.32.0
     version: 5.32.0(react-dom@18.2.0)(react@18.2.0)
-  antd-mobile-icons:
-    specifier: ^0.3.0
-    version: 0.3.0
   plasmo:
     specifier: 0.82.0
     version: 0.82.0(postcss@8.4.28)(react-dom@18.2.0)(react@18.2.0)

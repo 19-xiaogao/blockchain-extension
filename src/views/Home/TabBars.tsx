@@ -1,37 +1,24 @@
-import {
-    AppOutline,
-    MessageOutline,
-    MessageFill,
-    UnorderedListOutline,
-    UserOutline,
-    ReceiptOutline,
-} from 'antd-mobile-icons'
-import { TabBar } from 'antd-mobile'
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
 
+import { TabBar } from 'antd-mobile'
+import { useLocation, useNavigate } from "react-router-dom";
+import { AppstoreOutlined, MenuOutlined, SyncOutlined, WalletOutlined } from '@ant-design/icons';
 const tabs = [
     {
-        icon: <ReceiptOutline />,
-        title: 'Wallet',
+        icon: <WalletOutlined />,
         url: "/",
     },
     {
-        title: 'NFTs',
-        icon: <UnorderedListOutline />,
+        icon: <AppstoreOutlined />,
         url: "/nfts",
     },
     {
-        title: 'SWAP',
         url: "/swap",
-        icon: (active: boolean) =>
-            active ? <MessageFill /> : <MessageOutline />,
+        icon: <SyncOutlined />,
 
     },
     {
-        title: 'Records',
         url: "/records",
-        icon: <UserOutline />,
+        icon: <MenuOutlined />,
     },
 ]
 
@@ -39,9 +26,9 @@ export default function TabBars() {
     const navigate = useNavigate();
     const location = useLocation();
     const { pathname } = location;
-    return <TabBar activeKey={pathname} onChange={value => navigate(value)} className="border-t border-dark-100">
+    return <TabBar activeKey={pathname} onChange={value => navigate(value)} className="border-t border-dark-100 adm-tab-bar-item-active">
         {tabs.map(item => (
-            <TabBar.Item key={item.url} icon={item.icon} title={item.title} />
+            <TabBar.Item key={item.url} icon={item.icon} className='pt-0'  />
         ))}
     </TabBar>
 }
