@@ -30,8 +30,12 @@ module.exports = {
       "light-gray-300": "#e1e3e8",
       "off-white": "#f7f8f9",
       "black": "#000",
-      "font-gray": "#616a71"
-
+      "font-gray": "#616a71",
+      "send-bg": "#404043",
+      "send-hover": "#626265",
+      "coin-bg": "#1d1f22",
+      "coin-hover": "#28282c",
+      "add-coin": '#17171b'
     },
     extend: {},
   },

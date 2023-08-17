@@ -17,5 +17,5 @@ export function copyToClipboard(text: string) {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    message.success("copied!")
+    message.success("copied!");
 }
