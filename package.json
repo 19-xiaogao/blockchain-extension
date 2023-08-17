@@ -10,6 +10,7 @@
     "package": "plasmo package"
   },
   "dependencies": {
+    "antd": "^5.8.3",
     "antd-mobile": "^5.32.0",
     "antd-mobile-icons": "^0.3.0",
     "plasmo": "0.82.0",

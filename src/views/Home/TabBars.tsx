@@ -37,12 +37,8 @@ const tabs = [
 
 export default function TabBars() {
     const navigate = useNavigate();
-    const location = useLocation()
-    const { pathname } = location
-
-    useEffect(() => {
-        console.log(pathname);
-    }, [])
+    const location = useLocation();
+    const { pathname } = location;
     return <TabBar activeKey={pathname} onChange={value => navigate(value)} className="border-t border-dark-100">
         {tabs.map(item => (
             <TabBar.Item key={item.url} icon={item.icon} title={item.title} />

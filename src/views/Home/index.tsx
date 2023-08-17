@@ -7,7 +7,7 @@ import TabBars from "./TabBars"
 export default function Home() {
     return <div className="h-full flex flex-col justify-between pt-4 pl-2 pr-2">
         <Header />
-        <Outlet />
+        <div className="flex-1"> <Outlet /></div>
         <TabBars />
     </div>
 }
