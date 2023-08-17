@@ -1,7 +1,7 @@
 import { message } from "antd"
 import type { Address } from "~types";
 
-// format address to 0x123...ab32d, but address length === 42;
+// format address to 0x123...ab32d, but address length need === 42.
 export const formatAddress = (address: Address) => {
     if (address.length != 42) throw new Error("is not address")
     const prefix = address.slice(0, 6);
@@ -10,6 +10,7 @@ export const formatAddress = (address: Address) => {
     return result;
 }
 
+// copy content to clipboard.
 export function copyToClipboard(text: string) {
     const textarea = document.createElement('textarea');
     textarea.value = text;
