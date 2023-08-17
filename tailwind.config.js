@@ -35,7 +35,9 @@ module.exports = {
       "send-hover": "#626265",
       "coin-bg": "#1d1f22",
       "coin-hover": "#28282c",
-      "add-coin": '#17171b'
+      "add-coin": '#17171b',
+      "red": "#b1322e",
+      "dropdown": "#b7b7b9"
     },
     extend: {},
   },
