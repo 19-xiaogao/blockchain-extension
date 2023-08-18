@@ -3,9 +3,11 @@ import { formatAddress, copyToClipboard } from "~utils"
 import { Tooltip } from 'antd';
 import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
+import { useNavigate } from "react-router-dom";
 const address = "0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845"
 export default function WalletView() {
 
+    const navigate = useNavigate()
     // TODO:h-auto and overflow-y-auto bug
     return <div className="h-auto overflow-y-auto">
         <h1 className="text-center font-black text-3xl text-white font-mono mt-9">💵0.12</h1>
@@ -39,7 +41,9 @@ export default function WalletView() {
             </div>
             <div className="flex  justify-center mt-2">
                 <Button size="large" icon={<PlusOutlined />}
-                    className="border-none !text-dark-gray !text-sm bg-add-coin hover:bg-send-hover hover:!text-white flex items-center !rounded-3xl !pl-3 !pr-3">
+                    onClick={() => navigate('/addToken')}
+                    className="border-none !text-dark-gray !text-sm bg-add-coin
+                     hover:bg-send-hover hover:!text-white flex items-center !rounded-3xl !pl-3 !pr-3">
                     New Token</Button>
             </div>
         </div>

@@ -5,3 +5,6 @@
 .adm-tab-bar-item-active{
     color: #fff;
 }
+input {
+    outline: none;
+}

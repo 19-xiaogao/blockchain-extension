@@ -6,6 +6,7 @@ module.exports = {
     colors: {
       'blue': '#1fb6ff',
       "dark": "#111115",
+      "black": "#000000",
       "dark-100": "#242427",
       "dark-200": "#1b1d1f",
       "dark-blue": "#005f90",
@@ -18,6 +19,8 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
+      'gray-100': '#1f2123',
+      "gay-200":"#69696b",
       'white': '#ffffff',
       'midnight': '#121063',
       'metal': '#565584',
@@ -37,7 +40,7 @@ module.exports = {
       "coin-hover": "#28282c",
       "add-coin": '#17171b',
       "red": "#b1322e",
-      "dropdown": "#b7b7b9"
+      "dropdown": "#b7b7b9",
     },
     extend: {},
   },

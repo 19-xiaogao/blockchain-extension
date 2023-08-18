@@ -10,7 +10,7 @@ export default function Account() {
 
     }
     return <div className="w-full h-full">
-        <NavBar  backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2"  onClick={() =>navigate('/')} />} onBack={back} right={<PlusOutlined className=" text-font-gray text-xl" />}>
+        <NavBar  backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2"  onClick={() =>navigate('/')} />} onBack={back} right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" />}>
             <span className=" text-white text-base">Mainnet accounts</span>
         </NavBar>
         <div className="h-full p-3 overflow-y-auto">

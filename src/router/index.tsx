@@ -6,12 +6,13 @@ import WalletView from "~views/wallet";
 import NftsView from "~views/Nfts";
 import SwapView from "~views/Swap";
 import RecordsView from "~views/Records";
-import AccountView from '~views/Account'
+import AccountView from '~views/Account';
+import AddTokenView from '~views/AddToken';
 
 const router = createHashRouter([
   {
     path: "/",
-  
+
     element: <Home />,
     children: [
       {
@@ -35,6 +36,10 @@ const router = createHashRouter([
   {
     path: "account",
     element: <AccountView />
+  },
+  {
+    path: "addToken",
+    element: <AddTokenView />
   }
 ]);
 
