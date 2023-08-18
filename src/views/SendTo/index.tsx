@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavBar } from 'antd-mobile'
 import { CloseOutlined, PlusOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
 import { formatAddress } from "~utils";
+import AddAccount from "~components/AddAccount"
 export default function SendTo() {
     const navigate = useNavigate()
+    const [open, setOpen] = useState(false)
     const back = () => {
         console.log("click back icon");
-
+    }
+    const handleSetOpen = (bol: boolean) => {
+        setOpen(bol)
     }
     return <div className="w-full h-full">
-        <NavBar backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/')} />} onBack={back} right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" />}>
+        <NavBar backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/')} />} onBack={back}
+         right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => handleSetOpen(true)} />}>
             <span className=" text-white text-base">Send to</span>
         </NavBar>
         <div className="h-full p-3 overflow-y-auto">
@@ -26,7 +31,7 @@ export default function SendTo() {
                 <div className=" rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
                     <span className="text-white">My accounts</span>
                 </div>
-                <div className="rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
+                <div  className="rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
                     <span className="text-white">Address book</span>
                 </div>
             </div>
@@ -51,5 +56,6 @@ export default function SendTo() {
                 </div>
             </div>
         </div>
+        <AddAccount open={open} handleSetOpen={handleSetOpen} />
     </div>
 }
