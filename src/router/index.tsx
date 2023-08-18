@@ -10,6 +10,7 @@ import AccountView from '~views/Account';
 import AddTokenView from '~views/AddToken';
 import SendToView from '~views/SendTo';
 import SendView from '~views/Send';
+import SelectAssetView from '~views/SelectAsset';
 
 const router = createHashRouter([
   {
@@ -50,6 +51,10 @@ const router = createHashRouter([
   {
     path: "send",
     element: <SendView />
+  },
+  {
+    path: "selectAsset",
+    element: <SelectAssetView />
   }
 ]);
 

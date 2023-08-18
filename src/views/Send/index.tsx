@@ -31,7 +31,7 @@ export default function SendTo() {
                         <LoadingOutlined className=" text-orange" />
                     </div>
                     <div>
-                        <div className="text-white flex items-center  bg-black rounded-3xl w-auto p-1 justify-around  cursor-pointer">
+                        <div onClick={() =>navigate('/selectAsset')} className="text-white flex items-center  bg-black rounded-3xl w-auto p-1 justify-around  cursor-pointer">
                             <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-6 h-6" alt="" />
                             <span>ETH</span>
                             <ArrowDownOutlined />
