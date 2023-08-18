@@ -15,7 +15,7 @@ export default function SendTo() {
     }
     return <div className="w-full h-full">
         <NavBar backArrow={<ArrowLeftOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/sendTo')} />} onBack={back}
-            right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => handleSetOpen(true)} />}>
+            right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => navigate('/')} />}>
             <span className=" text-white text-base">Send</span>
         </NavBar>
         <div className="p-3 ">
@@ -37,7 +37,7 @@ export default function SendTo() {
                             <span>ETH</span>
                             <ArrowDownOutlined />
                         </div>
-                        <div className="text-dark-gray mt-1 text-xs">
+                        <div className="text-dark-gray mt-1 text-xs cursor-pointer">
                             Balance: 0.012ETH
                         </div>
                     </div>
