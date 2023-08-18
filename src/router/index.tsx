@@ -8,6 +8,7 @@ import SwapView from "~views/Swap";
 import RecordsView from "~views/Records";
 import AccountView from '~views/Account';
 import AddTokenView from '~views/AddToken';
+import SendToView from '~views/SendTo';
 
 const router = createHashRouter([
   {
@@ -40,6 +41,10 @@ const router = createHashRouter([
   {
     path: "addToken",
     element: <AddTokenView />
+  },
+  {
+    path: "sendTo",
+    element: <SendToView />
   }
 ]);
 

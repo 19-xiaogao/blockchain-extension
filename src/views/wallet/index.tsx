@@ -25,6 +25,7 @@ export default function WalletView() {
                 className="border-none !text-white !text-sm bg-send-bg hover:bg-send-hover hover:text-white flex items-center !rounded-3xl !pl-6 !pr-6">
                 Send</Button>
             <Button size="large" icon={<SendOutlined />}
+                onClick={() => navigate('/sendTo')}
                 className="border-none !text-white !text-sm bg-send-bg hover:bg-send-hover hover:text-white flex items-center !rounded-3xl ml-4 !pl-6 !pr-6"
             >Send</Button>
         </div>
