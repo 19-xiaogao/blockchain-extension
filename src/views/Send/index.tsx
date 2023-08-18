@@ -3,7 +3,6 @@ import { NavBar } from 'antd-mobile'
 import { CloseOutlined, ArrowLeftOutlined, ArrowDownOutlined, LoadingOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
 import { formatAddress } from "~utils";
-import AddAccount from "~components/AddAccount"
 export default function SendTo() {
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
