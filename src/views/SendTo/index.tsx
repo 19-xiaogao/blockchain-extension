@@ -15,7 +15,7 @@ export default function SendTo() {
     }
     return <div className="w-full h-full">
         <NavBar backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/')} />} onBack={back}
-         right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => handleSetOpen(true)} />}>
+            right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => handleSetOpen(true)} />}>
             <span className=" text-white text-base">Send to</span>
         </NavBar>
         <div className="h-full p-3 overflow-y-auto">
@@ -31,12 +31,12 @@ export default function SendTo() {
                 <div className=" rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
                     <span className="text-white">My accounts</span>
                 </div>
-                <div  className="rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
+                <div className="rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
                     <span className="text-white">Address book</span>
                 </div>
             </div>
             <div className="h-auto">
-                <div className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+                <div onClick={() => navigate('/send')} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
                     <div className="flex items-center">
                         <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                         <div className="ml-3">
@@ -45,7 +45,7 @@ export default function SendTo() {
                         </div>
                     </div>
                 </div>
-                <div className=" mt-2 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+                <div onClick={() => navigate('/send')} className=" mt-2 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
                     <div className="flex items-center">
                         <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                         <div className="ml-3">

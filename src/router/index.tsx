@@ -9,6 +9,7 @@ import RecordsView from "~views/Records";
 import AccountView from '~views/Account';
 import AddTokenView from '~views/AddToken';
 import SendToView from '~views/SendTo';
+import SendView from '~views/Send';
 
 const router = createHashRouter([
   {
@@ -45,6 +46,10 @@ const router = createHashRouter([
   {
     path: "sendTo",
     element: <SendToView />
+  },
+  {
+    path: "send",
+    element: <SendView />
   }
 ]);
 
