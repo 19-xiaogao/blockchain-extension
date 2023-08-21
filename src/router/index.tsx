@@ -12,7 +12,7 @@ import SendToView from '~views/SendTo';
 import SendView from '~views/Send';
 import SelectAssetView from '~views/SelectAsset';
 import TradingView from '~views/Trading';
-
+import RecordDetailView from "~views/RecordDetail";
 const router = createHashRouter([
   {
     path: "/",
@@ -60,6 +60,10 @@ const router = createHashRouter([
   {
     path: "/trading",
     element: <TradingView />
+  },
+  {
+    path: "/recordDetail",
+    element: <RecordDetailView />
   }
 ]);
 

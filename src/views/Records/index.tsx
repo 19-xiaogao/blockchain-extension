@@ -1,15 +1,15 @@
 import { SwapOutlined } from "@ant-design/icons";
 import React from "react";
 import { formatAddress } from "~utils";
-
+import { useNavigate } from "react-router-dom"
 export default function WalletView() {
-
+    const navigate = useNavigate()
     return <div className="p-4">
         <div className=" text-center mt-2">
             <span className=" text-2xl text-white font-semibold">Activity</span>
         </div>
         <div className="mt-4">
-            <div className="rounded-lg p-3 bg-[#1d1f22] flex items-center justify-between cursor-pointer">
+            <div onClick={()=> navigate('/recordDetail')} className="rounded-lg p-3 bg-[#1d1f22] flex items-center justify-between cursor-pointer">
                 <div className="flex items-center">
                     <SwapOutlined className="text-white text-2xl" />
                     <div className="ml-2">
