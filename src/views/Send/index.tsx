@@ -25,13 +25,13 @@ export default function SendTo() {
                         <input
                             type="text"
                             className="h-10  appearance-none  
-                            bg-coin-bg  text-dropdown w-full block border border-gray-100 text-xl"
+                            bg-coin-bg  w-full block border border-gray-100 text-xl text-white"
                             placeholder="0"
                         />
                         <LoadingOutlined className=" text-orange" />
                     </div>
                     <div>
-                        <div onClick={() =>navigate('/selectAsset')} className="text-white flex items-center  bg-black rounded-3xl w-auto p-1 justify-around  cursor-pointer">
+                        <div onClick={() => navigate('/selectAsset')} className="text-white flex items-center  bg-black rounded-3xl w-auto p-1 justify-around  cursor-pointer">
                             <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-6 h-6" alt="" />
                             <span>ETH</span>
                             <ArrowDownOutlined />
