@@ -57,6 +57,7 @@ export default function SendTo() {
                 </div>
             </div>
             <div
+                onClick={() =>navigate("/trading")}
                 className=" h-12  mt-52 rounded-3xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
                     flex items-center justify-center cursor-pointer text-base">
                 <span> Review Send</span>

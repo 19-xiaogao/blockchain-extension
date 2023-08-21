@@ -11,6 +11,7 @@ import AddTokenView from '~views/AddToken';
 import SendToView from '~views/SendTo';
 import SendView from '~views/Send';
 import SelectAssetView from '~views/SelectAsset';
+import TradingView from '~views/Trading';
 
 const router = createHashRouter([
   {
@@ -55,6 +56,10 @@ const router = createHashRouter([
   {
     path: "selectAsset",
     element: <SelectAssetView />
+  },
+  {
+    path: "/trading",
+    element: <TradingView />
   }
 ]);
 
