@@ -13,6 +13,8 @@ import SendView from '~views/Send';
 import SelectAssetView from '~views/SelectAsset';
 import TradingView from '~views/Trading';
 import RecordDetailView from "~views/RecordDetail";
+import SettingView from "~views/Setting";
+import LockView from "~views/Lock"
 const router = createHashRouter([
   {
     path: "/",
@@ -64,6 +66,14 @@ const router = createHashRouter([
   {
     path: "/recordDetail",
     element: <RecordDetailView />
+  },
+  {
+    path: "/setting",
+    element: <SettingView />
+  },
+  {
+    path: "/lock",
+    element: <LockView />
   }
 ]);
 

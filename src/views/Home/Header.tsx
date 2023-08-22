@@ -47,7 +47,7 @@ export default function Header() {
                     <span className="w-2 h-2 bg-green rounded-full"></span>
                 </div>
             </Dropdown>
-            <SettingOutlined className="text-[#848587] text-2xl cursor-pointer hover:text-white" />
+            <SettingOutlined className="text-[#848587] text-2xl cursor-pointer hover:text-white" onClick={() => navigate('/setting')} />
         </div>
     </div>
 }
