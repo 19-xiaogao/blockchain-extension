@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom"
 export default function ResetWallet() {
     const navigate = useNavigate();
 
-    const handleSetResetWallet = () => { 
-    
+    const handleSetResetWallet = () => {
+
     }
     return <div className="p-5 mt-5">
         <h1 className=" text-2xl text-white font-semibold">Reset wallet</h1>
