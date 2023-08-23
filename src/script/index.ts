@@ -5,6 +5,8 @@ export default function windowChanger() {
     window.etherJs = {
         world: "from injected content script",
         coolNumber: anotherFunc()
-
     }
+
+    console.log("import script success");
+    
 }

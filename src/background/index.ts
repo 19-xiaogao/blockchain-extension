@@ -19,5 +19,7 @@ const inject = async (tabId: number) => {
 // You can inject however you'd like to, doesn't have
 // to be with chrome.tabs.onActivated
 chrome.tabs.onActivated.addListener((e) => {
+  console.log("chrome.tab ----");
+  
   inject(e.tabId)
 })

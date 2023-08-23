@@ -1,6 +1,6 @@
 interface Window {
-    hello: {
-      world: string
-      coolNumber: number
-    }
+  etherJs: {
+    world: string
+    coolNumber: number
   }
+}
