@@ -10,7 +10,7 @@ export default function Lock() {
     }
     return <div className="w-full h-full p-3">
         <div className="text-right">
-            <span className="text-[#88888a] cursor-pointer">Reset</span>
+            <span className="text-[#88888a] cursor-pointer" onClick={() => navigate('/resetWallet')}>Reset</span>
         </div>
         <div className=" text-center  mt-12">
             <GithubOutlined className="text-white text-8xl" />

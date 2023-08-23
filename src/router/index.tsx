@@ -14,7 +14,8 @@ import SelectAssetView from '~views/SelectAsset';
 import TradingView from '~views/Trading';
 import RecordDetailView from "~views/RecordDetail";
 import SettingView from "~views/Setting";
-import LockView from "~views/Lock"
+import LockView from "~views/Lock";
+import ResetWalletView from "~views/ResetWallet";
 const router = createHashRouter([
   {
     path: "/",
@@ -74,6 +75,10 @@ const router = createHashRouter([
   {
     path: "/lock",
     element: <LockView />
+  },
+  {
+    path: "/resetWallet",
+    element: <ResetWalletView />
   }
 ]);
 
