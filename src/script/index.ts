@@ -1,5 +1,5 @@
-export default function windowChanger() {
-    const anotherFunc = (): number => {
+export default function loadScript() {
+    const anotherFunc = () => {
         return 42
     }
     window.etherJs = {
@@ -10,3 +10,4 @@ export default function windowChanger() {
     console.log("import script success");
     
 }
+
