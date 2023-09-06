@@ -1,3 +1,4 @@
+import React from "react";
 import {
   createHashRouter,
 } from "react-router-dom";
@@ -19,7 +20,7 @@ import ResetWalletView from "~views/ResetWallet";
 import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
 import NewWalletView from "~views/NewWallet";
-import FinishView from "~views/Introduce copy";
+import FinishView from "~views/Finish";
 const router = createHashRouter([
   {
     // path: "/introduce",

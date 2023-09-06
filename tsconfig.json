@@ -8,6 +8,7 @@
     "src/background/index.js"
   ],
   "compilerOptions": {
+    "jsx": "react",
     "paths": {
       "~*": ["./src/*"]
     },

@@ -8,6 +8,9 @@ dependencies:
   '@ant-design/icons':
     specifier: ^5.2.5
     version: 5.2.5(react-dom@18.2.0)(react@18.2.0)
+  anfs-js:
+    specifier: ^0.1.0
+    version: registry.npmjs.org/anfs-js@0.1.0
   antd:
     specifier: ^5.8.3
     version: 5.8.3(react-dom@18.2.0)(react@18.2.0)
@@ -6508,3 +6511,21 @@ packages:
   /yaml@2.3.1:
     resolution: {integrity: sha512-2eHWfjaoXgTBC2jNM1LRef62VQa0umtvRiDSk6HSzW7RvS5YtkabJrwYLLEKWBc8a5U2PTSCs+dJjUTJdlHsWQ==}
     engines: {node: '>= 14'}
+
+  registry.npmjs.org/anfs-js@0.1.0:
+    resolution: {integrity: sha512-6ldK1WSZac/j5JOLqbECQb0xpF/CjUPDUnJF8Wx8bAYP7Nl3T85foO2MzI15CvWUhi3hcNkrimRXw/HgnOih2Q==, registry: https://registry.npmmirror.com/, tarball: https://registry.npmjs.org/anfs-js/-/anfs-js-0.1.0.tgz}
+    name: anfs-js
+    version: 0.1.0
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': 1.9.2
+      '@noble/hashes': 1.1.2
+      '@noble/secp256k1': 1.7.1
+      '@types/node': 18.15.13
+      aes-js: 4.0.0-beta.5
+      tslib: 2.4.0
+      ws: 8.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
