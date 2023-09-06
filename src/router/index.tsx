@@ -16,10 +16,25 @@ import RecordDetailView from "~views/RecordDetail";
 import SettingView from "~views/Setting";
 import LockView from "~views/Lock";
 import ResetWalletView from "~views/ResetWallet";
+import IntroduceView from "~views/Introduce";
+import DisclaimerView from "~views/Disclaimer";
+import NewWalletView from "~views/NewWallet"
 const router = createHashRouter([
   {
+    // path: "/introduce",
     path: "/",
-
+    element: <IntroduceView />
+  },
+  {
+    path: '/disclaimer',
+    element: <DisclaimerView />
+  },
+  {
+    path: '/newWallet',
+    element: <NewWalletView />
+  },
+  {
+    // path: "/",
     element: <Home />,
     children: [
       {
@@ -79,7 +94,8 @@ const router = createHashRouter([
   {
     path: "/resetWallet",
     element: <ResetWalletView />
-  }
+  },
+
 ]);
 
 
