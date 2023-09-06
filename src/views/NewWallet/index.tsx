@@ -16,7 +16,7 @@ export default function IntroduceView() {
                 <input type="password" className="mt-4 bg-black w-3/4  h-14 border border-[#1d1f22] hover:border-[#404043] focus:border-[#707072]  rounded-md pl-5  pr-5 text-base text-white" placeholder="Password" />
             </div>
             <div
-                onClick={() => navigate('/newWallet')}
+                onClick={() => navigate('/finish')}
                 className="h-12 ml-4 mr-4 mt-10 rounded-3xl text-center  w-1/4 border-none  text-white bg-orange hover:bg-[#bd512e]  hover:!text-white
                 flex items-center justify-center cursor-pointer text-base">
                 <span>Create wallet</span>

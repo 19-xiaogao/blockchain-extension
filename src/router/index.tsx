@@ -18,7 +18,8 @@ import LockView from "~views/Lock";
 import ResetWalletView from "~views/ResetWallet";
 import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
-import NewWalletView from "~views/NewWallet"
+import NewWalletView from "~views/NewWallet";
+import FinishView from "~views/Finish";
 const router = createHashRouter([
   {
     // path: "/introduce",
@@ -32,6 +33,10 @@ const router = createHashRouter([
   {
     path: '/newWallet',
     element: <NewWalletView />
+  },
+  {
+    path: "/finish",
+    element: <FinishView />
   },
   {
     // path: "/",
