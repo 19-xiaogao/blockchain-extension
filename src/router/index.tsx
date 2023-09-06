@@ -19,7 +19,7 @@ import ResetWalletView from "~views/ResetWallet";
 import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
 import NewWalletView from "~views/NewWallet";
-import FinishView from "~views/Finish";
+import FinishView from "~views/Introduce copy";
 const router = createHashRouter([
   {
     // path: "/introduce",
