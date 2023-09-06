@@ -7,7 +7,7 @@ export default function IntroduceView() {
 
     return <div className="flex h-full">
         <div className="w-[70%] flex flex-col  justify-center pl-28">
-            <Steps index={0} />
+            <Steps index={3} />
             <div className="text-2xl text-white font-semibold mt-5">Your wallet is ready</div>
             <div className="text-[#949496] text-sm  mt-3">Follow us for product updates or if you have any questions</div>
             <div className="flex mt-5">
