@@ -46,6 +46,9 @@ devDependencies:
   '@types/chrome':
     specifier: 0.0.243
     version: 0.0.243
+  '@types/crypto-js':
+    specifier: ^4.1.2
+    version: 4.1.2
   '@types/node':
     specifier: 20.5.0
     version: 20.5.0
@@ -2625,6 +2628,10 @@ packages:
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.11
+    dev: true
+
+  /@types/crypto-js@4.1.2:
+    resolution: {integrity: sha512-t33RNmTu5ufG/sorROIafiCVJMx3jz95bXUMoPAZcUD14fxMXnuTzqzXZoxpR0tNx2xpw11Dlmem9vGCsrSOfA==}
     dev: true
 
   /@types/estree@1.0.1:

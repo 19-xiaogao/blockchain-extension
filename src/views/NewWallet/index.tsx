@@ -1,11 +1,37 @@
-import { ReloadOutlined, WalletOutlined } from "@ant-design/icons";
-import { Checkbox } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Steps from "~components/Steps";
+import crypto from "~crpto"
+import * as ethers from "ethers"
+import * as anfsJs from "anfs-js"
+// console.log();
+
+// console.log(ethers);
+const phrase = "robust citizen goat dress sunset shoe monster right olympic pluck crawl rescue"
+const password = "773387501long"
 export default function IntroduceView() {
     const navigate = useNavigate()
+    useEffect(() => {
+        const enCrypto = crypto.encryptMnemonic(phrase, password)
+        console.log(enCrypto, "enCrypto");
+        const mnemonic = crypto.deCryptoMnemonic(enCrypto, password)
+        console.log(mnemonic);
 
+        // 创建一个随机钱包
+        // console.log(anfsJs.Wallet.createRandom().address, "anfsJs");
+        // console.log(anfsJs.Wallet.fromPhrase(phrase));
+
+        // const wallet = anfsJs.Wallet.createRandom();
+        // console.log(wallet.address,"address");
+        // console.log(wallet);
+
+        // console.log(wallet.deriveChild(1),"address");
+
+        // console.log(wallet);
+
+
+        // console.log(ethers.Wallet.createRandom(), "ethers");
+    }, [])
     return <div className="flex h-full">
         <div className="w-[70%] flex flex-col  justify-center pl-28">
             <Steps index={2} />
