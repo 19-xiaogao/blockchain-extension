@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.5",
+    "@plasmohq/storage": "^1.7.2",
     "anfs-js": "^0.1.0",
     "antd": "^5.8.3",
     "antd-mobile": "^5.32.0",
