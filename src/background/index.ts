@@ -1,1 +1,1 @@
-console.log("this is background js file");
+export * from "./storage"
