@@ -1,11 +1,11 @@
 <!-- logo -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/argentlabs/argent-x/HEAD/assets/readme-header.png">
+  <!-- <img src="https://raw.githubusercontent.com/argentlabs/argent-x/HEAD/assets/readme-header.png"> -->
 </p>
 
 ---
 
-<h3 align='center' style='margin: 1em;'>⬇️ Get <b>Argent X</b> for StarkNet today:</h3>
+<h3 align='center' style='margin: 1em;'>⬇️ Get <b>AFS X</b> for StarkNet today:</h3>
 
 <p align="center">
   <a href="https://chrome.google.com/webstore/detail/argent-x-starknet-wallet/dlcobpjiigpikoobohmabehhmhfoodbb/">
@@ -122,7 +122,7 @@ This project contains 3 packages:
 
 | package | description |
 | --- | --- |
-| extension | Argent X extension |
+| extension |  X extension |
 | get-starknet | npm module to get started with starknet.js and Argent X quickly |
 | dapp | example dapp for testing purposes and example for dapps how to use `get-starknet` |
 
