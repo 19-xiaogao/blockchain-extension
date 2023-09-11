@@ -1,5 +1,8 @@
-import React, { lazy } from "react";
-import { createHashRouter, redirect, useNavigate } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import { createHashRouter, useRouteError, redirect } from "react-router-dom";
+
+type IRouterBeforeLoad = (res: any, redirectUrl: string) => Boolean;
+
 import Home from "~views/Home"
 import WalletView from "~views/wallet";
 import NftsView from "~views/Nfts";
@@ -19,10 +22,13 @@ import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
 import NewWalletView from "~views/NewWallet";
 import FinishView from "~views/Finish";
-import { getStoragePassword } from "~background";
+import { getStorageMnemonic, getStoragePassword } from "~background";
 
-// 判断session是否过期
 const sessionExpiredFnc = async () => {
+  const Mnemonic = await getStorageMnemonic()
+  if (!Mnemonic) {
+    return redirect("/introduce");
+  }
   const password = await getStoragePassword()
   if (!password) {
     return redirect("/lock");
@@ -30,17 +36,15 @@ const sessionExpiredFnc = async () => {
 
   return ""
 }
-
 const router = createHashRouter([
   {
     path: "/introduce",
     // path: "/",
-    Component: lazy(() => import("~views/Introduce")),
+    element: <IntroduceView />
   },
   {
     path: '/disclaimer',
-    Component: lazy(() => import("~views/Disclaimer")),
-    // element: <DisclaimerView />
+    element: <DisclaimerView />
   },
   {
     path: '/newWallet',
