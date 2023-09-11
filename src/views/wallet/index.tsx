@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { getStorageMnemonic, getStoragePassword } from "~background";
-import walletCrypto from "~crpto"
+import walletCrypto from "~background/crpyto"
 // const address = "0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845"
 export default function WalletView() {
 

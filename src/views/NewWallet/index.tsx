@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Steps from "~components/Steps";
-import crypto from "~crpto"
+import walletCrypto from "~background/crpyto"
 import { Button } from "antd";
 import { setStorageMnemonic, setStoragePassword } from "~background"
 
@@ -19,7 +19,7 @@ export default function IntroduceView() {
     const verifyPassword = useMemo(() => password === newPassword && password != '', [password, newPassword])
 
     const handleCreateWallet = async () => {
-        const enCryptoMnemonic = crypto.encryptMnemonic(crypto.createMnemonic(), password)
+        const enCryptoMnemonic = walletCrypto.encryptMnemonic(walletCrypto.createMnemonic(), password)
         await setStorageMnemonic(enCryptoMnemonic)
         await setStoragePassword(password)
         navigate('/finish')
