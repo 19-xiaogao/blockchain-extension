@@ -49,3 +49,19 @@ export async function removeStorageRPC() {
     return RPCListStorage.remove(RPCList)
 }
 
+
+//保存rpc相关操作 RecoveryPhrase
+const isSaverRecoveryPhrase = "IS_SAVER_RECOVERY_PHRASE"
+const phraseStorage = new Storage({ area: "local" })
+
+export async function setStoragePhrase(phrase: string) {
+    return phraseStorage.set(isSaverRecoveryPhrase, phrase)
+}
+
+export async function getStorageSavePhrase() {
+    return phraseStorage.get(isSaverRecoveryPhrase)
+}
+
+export async function removeStoragePhrase() {
+    return phraseStorage.remove(isSaverRecoveryPhrase)
+}
