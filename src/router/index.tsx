@@ -22,6 +22,8 @@ import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
 import NewWalletView from "~views/NewWallet";
 import FinishView from "~views/Finish";
+import RecoveryPhrase from "~views/RecoveryPhrase"
+import SavePhrase from "~views/SavePhrase"
 import { getStorageMnemonic, getStoragePassword } from "~background";
 
 const sessionExpiredFnc = async () => {
@@ -39,7 +41,7 @@ const sessionExpiredFnc = async () => {
 const router = createHashRouter([
   {
     path: "/introduce",
-    // path: "/",
+
     element: <IntroduceView />
   },
   {
@@ -117,7 +119,14 @@ const router = createHashRouter([
     path: "/resetWallet",
     element: <ResetWalletView />
   },
-
+  {
+    path: "/recoveryPhrase",
+    element: <RecoveryPhrase />
+  },
+  {
+    path: "/savePhrase",
+    element: <SavePhrase />
+  }
 ]);
 
 

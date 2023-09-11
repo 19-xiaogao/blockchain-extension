@@ -1,7 +1,7 @@
 import { getStorageMnemonic, getStoragePassword } from "./storage"
 import walletCrypto from "./crpyto"
 
-export const exportWallet = async (password) => {
+export const usePasswordExportWallet = async (password) => {
     try {
         const mnemonic = await getStorageMnemonic()
         const wallet = walletCrypto.mnemonicToWallet(walletCrypto.deCryptoMnemonic(mnemonic, password))
@@ -11,3 +11,15 @@ export const exportWallet = async (password) => {
         return false
     }
 }
+
+export const exportWallet = async () => {
+    try {
+        const mnemonic = await getStorageMnemonic()
+        const password = await getStoragePassword()
+        return walletCrypto.deCryptoMnemonic(mnemonic, password)
+    } catch (error) {
+        console.log("error:exportWallet is err");
+        return ""
+    }
+}
+

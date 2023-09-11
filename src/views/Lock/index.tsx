@@ -3,7 +3,7 @@ import { message } from "antd";
 import { NavBar } from "antd-mobile";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { exportWallet, setStoragePassword } from "~background"
+import { usePasswordExportWallet, setStoragePassword } from "~background"
 export default function Lock() {
     const navigate = useNavigate()
     const [password, setPassWord] = useState("")
@@ -14,7 +14,7 @@ export default function Lock() {
         console.log("click back icon")
     }
     const handleUnLock = async () => {
-        const isLock = await exportWallet(password)
+        const isLock = await usePasswordExportWallet(password)
         console.log(isLock);
 
         if (isLock) {

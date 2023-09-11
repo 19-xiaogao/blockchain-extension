@@ -4,7 +4,7 @@ import { LockOutlined } from "@ant-design/icons"
 export default function SaveMnemonic() {
     const navigate = useNavigate()
 
-    return <div onClick={() => navigate('/sendTo')} className="bg-[#3f2107] rounded-2xl w-full p-3 flex items-center justify-between hover:bg-[#644413] cursor-pointer transition-all duration-100">
+    return <div onClick={() => navigate('/recoveryPhrase')} className="bg-[#3f2107] rounded-2xl w-full p-3 flex items-center justify-between hover:bg-[#644413] cursor-pointer transition-all duration-100">
         <div className="flex items-center">
             <LockOutlined className=" text-white text-2xl" />
             <div className="ml-3">
