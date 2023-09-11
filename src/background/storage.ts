@@ -65,3 +65,21 @@ export async function getStorageSavePhrase() {
 export async function removeStoragePhrase() {
     return phraseStorage.remove(isSaverRecoveryPhrase)
 }
+
+
+const walletList = "WALLET_LIST"
+
+const walletListStorage = new Storage({ area: "local" })
+
+
+export async function setStorageWalletList(wallet: Object) {
+    return walletListStorage.set(walletList, [...await getStorageWalletList(), wallet])
+}
+
+export async function getStorageWalletList() {
+    return walletListStorage.get(walletList)
+}
+
+export async function removeStorageWalletList() {
+    return walletListStorage.remove(walletList)
+}
