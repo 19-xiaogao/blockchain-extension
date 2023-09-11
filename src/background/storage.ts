@@ -32,3 +32,20 @@ export async function getStoragePassword() {
 export async function removeStoragePassword() {
     return PasswordStorage.remove(WalletPassword)
 }
+
+//保存rpc相关操作
+const RPCList = "PRC_LIST"
+const RPCListStorage = new Storage({ area: "local" })
+
+export async function setStorageRPC(rpc: string[]) {
+    return RPCListStorage.set(RPCList, rpc)
+}
+
+export async function getStorageRPC() {
+    return RPCListStorage.get(RPCList)
+}
+
+export async function removeStorageRPC() {
+    return RPCListStorage.remove(RPCList)
+}
+
