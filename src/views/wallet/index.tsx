@@ -6,7 +6,7 @@ import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import { getStorageMnemonic, getStoragePassword } from "~background";
 import walletCrypto from "~background/crpyto"
-// const address = "0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845"
+import SaveMnemonic from "~components/saveMnemonic"
 export default function WalletView() {
 
     const [address, setAddress] = useState<any>("0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845")
@@ -45,7 +45,8 @@ export default function WalletView() {
             >Send</Button>
         </div>
         <div className="mt-5">
-            <div onClick={() => navigate('/sendTo')} className="bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+            <SaveMnemonic />
+            <div onClick={() => navigate('/sendTo')} className="bg-coin-bg rounded-2xl mt-2 w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
                 <div className="flex items-center">
                     <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                     <div className="ml-3">
