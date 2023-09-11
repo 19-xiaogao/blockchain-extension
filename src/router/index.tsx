@@ -1,7 +1,5 @@
-import React from "react";
-import {
-  createHashRouter,
-} from "react-router-dom";
+import React, { lazy } from "react";
+import { createHashRouter, redirect, useNavigate } from "react-router-dom";
 import Home from "~views/Home"
 import WalletView from "~views/wallet";
 import NftsView from "~views/Nfts";
@@ -21,15 +19,28 @@ import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
 import NewWalletView from "~views/NewWallet";
 import FinishView from "~views/Finish";
+import { getStoragePassword } from "~background";
+
+// 判断session是否过期
+const sessionExpiredFnc = async () => {
+  const password = await getStoragePassword()
+  if (!password) {
+    return redirect("/lock");
+  }
+
+  return ""
+}
+
 const router = createHashRouter([
   {
     path: "/introduce",
     // path: "/",
-    element: <IntroduceView />
+    Component: lazy(() => import("~views/Introduce")),
   },
   {
     path: '/disclaimer',
-    element: <DisclaimerView />
+    Component: lazy(() => import("~views/Disclaimer")),
+    // element: <DisclaimerView />
   },
   {
     path: '/newWallet',
@@ -42,6 +53,7 @@ const router = createHashRouter([
   {
     path: "/",
     element: <Home />,
+    loader: sessionExpiredFnc,
     children: [
       {
         path: "/",
