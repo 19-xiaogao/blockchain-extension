@@ -21,6 +21,6 @@ export default {
     // 解密助记词 encrypted 经过加密的助记词短语  passwordKey 加密的密钥
     deCryptoMnemonic(encrypted: string, passwordKey: string): string {
         return cryptoJs.AES.decrypt(encrypted, passwordKey).toString(cryptoJs.enc.Utf8)
-    }
+    },
 
 }

@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { formatAddress, copyToClipboard } from "~utils"
 import { Tooltip } from 'antd';
 import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
-const address = "0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845"
+import { getStorageMnemonic, getStoragePassword } from "~background";
+import walletCrypto from "~crpto"
+// const address = "0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845"
 export default function WalletView() {
+
+    const [address, setAddress] = useState<any>("0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845")
+
+    useEffect(() => {
+        getAddress()
+    }, [])
+    const getAddress = async () => {
+        const mnemonic = await getStorageMnemonic()
+        const password = await getStoragePassword()
+        const wallet = walletCrypto.mnemonicToWallet(walletCrypto.deCryptoMnemonic(mnemonic, password))
+        setAddress(wallet.address)
+        console.log(wallet, "wallet");
+    }
 
     const navigate = useNavigate()
     // TODO:h-auto and overflow-y-auto bug
