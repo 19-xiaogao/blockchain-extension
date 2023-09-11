@@ -1,10 +1,14 @@
-import { ReloadOutlined, DisconnectOutlined,TwitterCircleFilled } from "@ant-design/icons";
+import { ReloadOutlined, DisconnectOutlined, TwitterCircleFilled } from "@ant-design/icons";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Steps from "~components/Steps";
+import { closeNewTabPage } from "~background"
 export default function IntroduceView() {
     const navigate = useNavigate()
 
+    const handleFinishClick = () => {
+        closeNewTabPage()
+    }
     return <div className="flex h-full">
         <div className="w-[70%] flex flex-col  justify-center pl-28">
             <Steps index={3} />
@@ -21,7 +25,7 @@ export default function IntroduceView() {
                 </div>
             </div>
             <div
-                onClick={() => navigate('/finish')}
+                onClick={handleFinishClick}
                 className="h-12 ml-4 mr-4 mt-10 rounded-3xl text-center  w-1/4 border-none  text-white bg-orange hover:bg-[#bd512e]  hover:!text-white
                 flex items-center justify-center cursor-pointer text-base">
                 <span>Finish</span>
