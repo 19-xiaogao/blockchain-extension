@@ -23,8 +23,8 @@ import NewWalletView from "~views/NewWallet";
 import FinishView from "~views/Finish";
 const router = createHashRouter([
   {
-    // path: "/introduce",
-    path: "/",
+    path: "/introduce",
+    // path: "/",
     element: <IntroduceView />
   },
   {
@@ -40,7 +40,7 @@ const router = createHashRouter([
     element: <FinishView />
   },
   {
-    // path: "/",
+    path: "/",
     element: <Home />,
     children: [
       {
@@ -103,6 +103,7 @@ const router = createHashRouter([
   },
 
 ]);
+
 
 
 export default router

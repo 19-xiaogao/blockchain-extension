@@ -10,3 +10,7 @@ export async function setStorageMnemonic(enCryptoMnemonic: string) {
 export async function getStorageMnemonic() {
     return storage.get(MNEMONIC)
 }
+
+export async function removeStorageMnemonic() {
+    return storage.remove(MNEMONIC)
+}

@@ -8,6 +8,7 @@ export default function IntroduceView() {
 
     const handleFinishClick = () => {
         closeNewTabPage()
+        navigate('/')
     }
     return <div className="flex h-full">
         <div className="w-[70%] flex flex-col  justify-center pl-28">
