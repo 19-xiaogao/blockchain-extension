@@ -1,5 +1,12 @@
 import { Storage } from "@plasmohq/storage"
 
+function removePropertyFromArray(arr, property) {
+    return arr.map(obj => {
+        const { [property]: prop, ...rest } = obj;
+        return rest;
+    });
+}
+
 // 保存用户助记词的操作
 const MNEMONIC = "MNEMONIC"
 const WalletStorage = new Storage({ area: "local" })
@@ -71,9 +78,14 @@ const walletList = "WALLET_LIST"
 
 const walletListStorage = new Storage({ area: "local" })
 
-
 export async function setStorageWalletList(wallet: Object) {
-    return walletListStorage.set(walletList, [...await getStorageWalletList(), wallet])
+    const walletLs = await getStorageWalletList()
+    if (walletLs) {
+        return walletListStorage.set(walletList, [...walletLs, wallet])
+    }
+    return walletListStorage.set(walletList, removePropertyFromArray([wallet], "mnemonic"))
+
+
 }
 
 export async function getStorageWalletList() {
@@ -82,4 +94,22 @@ export async function getStorageWalletList() {
 
 export async function removeStorageWalletList() {
     return walletListStorage.remove(walletList)
+}
+
+
+const currentWallet = "CURRENT_WALLET"
+
+const currentWalletStorage = new Storage({ area: "local" })
+
+export async function setCurrentWalletStorage(wallet: any) {
+    delete wallet["mnemonic"]
+    return currentWalletStorage.set(currentWallet, wallet)
+}
+
+export async function getCurrentWalletStorage() {
+    return currentWalletStorage.get(currentWallet)
+}
+
+export async function removeCurrentWalletStorage() {
+    return currentWalletStorage.remove(currentWallet)
 }
