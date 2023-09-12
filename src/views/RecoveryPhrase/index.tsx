@@ -21,7 +21,7 @@ export default function RecoveryPhrase() {
     }
     return <div className="w-full h-full">
         <NavBar backArrow={<ArrowLeftOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/')} />} onBack={back}
-            right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" />}
+            right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => navigate('/')} />}
         >
             <span className=" text-white text-base">Recovery Phrase</span>
         </NavBar>

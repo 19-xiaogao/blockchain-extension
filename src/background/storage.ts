@@ -73,7 +73,7 @@ export async function removeStoragePhrase() {
     return phraseStorage.remove(isSaverRecoveryPhrase)
 }
 
-
+//钱包列表
 const walletList = "WALLET_LIST"
 
 const walletListStorage = new Storage({ area: "local" })
@@ -96,7 +96,7 @@ export async function removeStorageWalletList() {
     return walletListStorage.remove(walletList)
 }
 
-
+// 当前账户
 const currentWallet = "CURRENT_WALLET"
 
 const currentWalletStorage = new Storage({ area: "local" })
@@ -112,4 +112,22 @@ export async function getCurrentWalletStorage() {
 
 export async function removeCurrentWalletStorage() {
     return currentWalletStorage.remove(currentWallet)
+}
+
+// 临时保存用护助记词
+
+const temporarilySaveMnemonic = "TEM_SAVE_MNEMONIC"
+
+const temporarilySaveStorage = new Storage({ area: "session" })
+
+export async function setTemMneStorage(mnemonic: string) {
+    return temporarilySaveStorage.set(temporarilySaveMnemonic, mnemonic)
+}
+
+export async function getTemMneStorage() {
+    return temporarilySaveStorage.get(temporarilySaveMnemonic)
+}
+
+export async function removeTemMneStorage() {
+    return temporarilySaveStorage.remove(temporarilySaveMnemonic)
 }

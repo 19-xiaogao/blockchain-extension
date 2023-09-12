@@ -15,7 +15,7 @@ export default function IntroduceView() {
                     <WalletOutlined className=" text-orange text-4xl" />
                     <span className="text-white mt-3">Create a new wallet</span>
                 </div>
-                <div className="rounded-2xl bg-[#1d1f22]  w-72 h-32 mr-10 hover:bg-[#28282c] flex flex-col justify-center items-center  cursor-pointer">
+                <div onClick={() => navigate('/importWallet')} className="rounded-2xl bg-[#1d1f22]  w-72 h-32 mr-10 hover:bg-[#28282c] flex flex-col justify-center items-center  cursor-pointer">
                     <ReloadOutlined className=" text-white text-4xl" />
                     <span className="text-white mt-3">Restore an existing wallet</span>
                 </div>
