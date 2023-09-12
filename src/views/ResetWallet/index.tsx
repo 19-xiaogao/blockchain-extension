@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"
-import { removeStorageMnemonic, removeStoragePassword, removeStorageWalletList } from "~background"
+import { removeStorageMnemonic, removeStoragePassword, removeStoragePhrase, removeStorageWalletList } from "~background"
 export default function ResetWallet() {
     const navigate = useNavigate();
 
@@ -8,6 +8,7 @@ export default function ResetWallet() {
         await removeStorageMnemonic()
         await removeStoragePassword()
         await removeStorageWalletList()
+        await removeStoragePhrase()
         navigate('/introduce')
     }
     return <div className="p-5 mt-5">

@@ -57,7 +57,7 @@ export async function removeStorageRPC() {
 }
 
 
-//保存rpc相关操作 RecoveryPhrase
+// 判断用户是否保存相关助记词
 const isSaverRecoveryPhrase = "IS_SAVER_RECOVERY_PHRASE"
 const phraseStorage = new Storage({ area: "local" })
 
