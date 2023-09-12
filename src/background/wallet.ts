@@ -33,8 +33,8 @@ export const exportAddress = async (index: number) => {
 }
 
 //获取当前地址的私钥
-export const deCurrentHDWalletPrivateKye = async () => {
-    const mnemonic = await exportMnemonic()
-    const wallet = walletCrypto.mnemonicToWallet(mnemonic);
+export const deCurrentHDWalletPrivateKey = async (password: string) => {
+    const wallet = await usePasswordExportWallet(password)
+    if (!wallet) return false
     return anfsJs.HDNodeWallet.fromMnemonic(wallet.mnemonic, wallet.path).privateKey;
 }

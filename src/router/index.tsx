@@ -19,11 +19,13 @@ import LockView from "~views/Lock";
 import ResetWalletView from "~views/ResetWallet";
 import IntroduceView from "~views/Introduce";
 import DisclaimerView from "~views/Disclaimer";
-import ImportWallet from "~views/ImportWallet";
+import ImportWalletView from "~views/ImportWallet";
 import NewWalletView from "~views/NewWallet";
 import FinishView from "~views/Finish";
-import RecoveryPhrase from "~views/RecoveryPhrase"
-import SavePhrase from "~views/SavePhrase"
+import RecoveryPhraseView from "~views/RecoveryPhrase"
+import SavePhraseView from "~views/SavePhrase"
+import AccountDetailView from "~views/AccountDetail"
+import ExportPrivateKeyView from "~views/ExportPrivateKey"
 import { getStorageMnemonic, getStoragePassword } from "~background";
 
 const sessionExpiredFnc = async () => {
@@ -58,7 +60,7 @@ const router = createHashRouter([
   },
   {
     path: '/importWallet',
-    element: <ImportWallet />
+    element: <ImportWalletView />
   },
   {
     path: "/",
@@ -125,11 +127,19 @@ const router = createHashRouter([
   },
   {
     path: "/recoveryPhrase",
-    element: <RecoveryPhrase />
+    element: <RecoveryPhraseView />
   },
   {
     path: "/savePhrase",
-    element: <SavePhrase />
+    element: <SavePhraseView />
+  },
+  {
+    path: "/accountDetail",
+    element: <AccountDetailView />
+  },
+  {
+    path: "/exportPrivateKey",
+    element: <ExportPrivateKeyView />
   }
 ]);
 

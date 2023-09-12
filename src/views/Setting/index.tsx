@@ -29,7 +29,7 @@ export default function Setting() {
             <span className="text-white text-base">Settings</span>
         </NavBar>
         <div className="mt-4 p-4">
-            <div className="bg-[#242427] rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+            <div onClick={() => navigate('/accountDetail')} className="bg-[#242427] rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
                 <div className="flex items-center justify-between">
                     <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                     <div className="ml-3">
