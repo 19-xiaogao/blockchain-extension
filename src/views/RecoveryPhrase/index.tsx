@@ -3,7 +3,7 @@ import { NavBar } from 'antd-mobile'
 import { CloseOutlined, ArrowLeftOutlined, CopyFilled } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
 import { copyToClipboard } from "~utils";
-import { exportWallet } from "~background";
+import { exportMnemonic } from "~background";
 
 export default function RecoveryPhrase() {
     const navigate = useNavigate()
@@ -13,7 +13,7 @@ export default function RecoveryPhrase() {
         getMnemonic()
     }, [])
     const getMnemonic = async () => {
-        const _mnemonic = await exportWallet()
+        const _mnemonic = await exportMnemonic()
         setMnemonic(_mnemonic)
     }
     const back = () => {

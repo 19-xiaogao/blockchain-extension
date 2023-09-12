@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Steps from "~components/Steps";
 import walletCrypto from "~background/crpyto"
 import { Button } from "antd";
-import { setStorageMnemonic, setStoragePassword } from "~background"
+import { setCurrentWalletStorage, setStorageMnemonic, setStoragePassword, setStorageWalletList, usePasswordExportWallet } from "~background"
 
 export default function IntroduceView() {
     const navigate = useNavigate()
@@ -22,6 +22,9 @@ export default function IntroduceView() {
         const enCryptoMnemonic = walletCrypto.encryptMnemonic(walletCrypto.createMnemonic(), password)
         await setStorageMnemonic(enCryptoMnemonic)
         await setStoragePassword(password)
+        const wallet = await usePasswordExportWallet(password)
+        await setStorageWalletList(wallet)
+        await setCurrentWalletStorage(wallet)
         navigate('/finish')
     }
 

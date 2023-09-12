@@ -1,24 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { NavBar } from 'antd-mobile'
-import { CloseOutlined, ArrowLeftOutlined, CopyFilled } from "@ant-design/icons"
-import { Tag } from "antd"
+import React from "react";
 import { useNavigate } from "react-router-dom"
-import { copyToClipboard, formatAddress } from "~utils";
-import { Tooltip } from "antd";
-import { exportWallet, setStoragePhrase } from "~background";
-const address = "0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845"
+import { setStoragePhrase } from "~background";
 
 export default function RecoveryPhrase() {
     const navigate = useNavigate()
-    const [mnemonic, setMnemonic] = useState("")
 
-    useEffect(() => {
-        getMnemonic()
-    }, [])
-    const getMnemonic = async () => {
-        const _mnemonic = await exportWallet()
-        setMnemonic(_mnemonic)
-    }
     const handleSavePhrase = () => {
         setStoragePhrase("true")
         navigate('/')

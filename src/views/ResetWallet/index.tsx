@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"
-import { removeStorageMnemonic, removeStoragePassword } from "~background"
+import { removeStorageMnemonic, removeStoragePassword, removeStorageWalletList } from "~background"
 export default function ResetWallet() {
     const navigate = useNavigate();
 
     const handleSetResetWallet = async () => {
         await removeStorageMnemonic()
         await removeStoragePassword()
+        await removeStorageWalletList()
         navigate('/introduce')
     }
     return <div className="p-5 mt-5">

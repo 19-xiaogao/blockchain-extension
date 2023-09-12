@@ -4,7 +4,7 @@ import { Tooltip } from 'antd';
 import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
-import { getStorageMnemonic, getStoragePassword } from "~background";
+import { getCurrentWalletStorage, getStorageMnemonic, getStoragePassword } from "~background";
 import walletCrypto from "~background/crpyto"
 import SaveMnemonic from "~components/saveMnemonic"
 export default function WalletView() {
@@ -15,11 +15,8 @@ export default function WalletView() {
         getAddress()
     }, [])
     const getAddress = async () => {
-        const mnemonic = await getStorageMnemonic()
-        const password = await getStoragePassword()
-        const wallet = walletCrypto.mnemonicToWallet(walletCrypto.deCryptoMnemonic(mnemonic, password))
+        const wallet: any = await getCurrentWalletStorage()
         setAddress(wallet.address)
-        console.log(wallet, "wallet");
     }
 
     const navigate = useNavigate()
