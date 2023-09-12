@@ -22,5 +22,5 @@ export default {
     deCryptoMnemonic(encrypted: string, passwordKey: string): string {
         return cryptoJs.AES.decrypt(encrypted, passwordKey).toString(cryptoJs.enc.Utf8)
     },
-
+    
 }

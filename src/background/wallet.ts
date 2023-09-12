@@ -1,5 +1,6 @@
 import { getStorageMnemonic, getStoragePassword } from "./storage"
 import walletCrypto from "./crpyto"
+import * as anfsJs from "anfs-js"
 
 export const usePasswordExportWallet = async (password) => {
     try {
@@ -31,5 +32,9 @@ export const exportAddress = async (index: number) => {
     return childWallet
 }
 
-
-
+//获取当前地址的私钥
+export const deCurrentHDWalletPrivateKye = async () => {
+    const mnemonic = await exportMnemonic()
+    const wallet = walletCrypto.mnemonicToWallet(mnemonic);
+    return anfsJs.HDNodeWallet.fromMnemonic(wallet.mnemonic, wallet.path).privateKey;
+}

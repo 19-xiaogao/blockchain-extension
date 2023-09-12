@@ -4,21 +4,10 @@ import { Tooltip } from 'antd';
 import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
-import { getCurrentWalletStorage, getStorageMnemonic, getStoragePassword } from "~background";
-import walletCrypto from "~background/crpyto"
 import SaveMnemonic from "~components/saveMnemonic"
+import useGetAddress from "~hooks";
 export default function WalletView() {
-
-    const [address, setAddress] = useState<any>("0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845")
-
-    useEffect(() => {
-        getAddress()
-    }, [])
-    const getAddress = async () => {
-        const wallet: any = await getCurrentWalletStorage()
-        setAddress(wallet.address)
-    }
-
+    const address = useGetAddress()
     const navigate = useNavigate()
     // TODO:h-auto and overflow-y-auto bug
     return <div className="h-auto overflow-y-auto">
