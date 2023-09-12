@@ -1,7 +1,6 @@
-import React, { Suspense, lazy } from "react";
-import { createHashRouter, useRouteError, redirect } from "react-router-dom";
+import React, { Suspense } from "react";
+import { createHashRouter, redirect } from "react-router-dom";
 
-type IRouterBeforeLoad = (res: any, redirectUrl: string) => Boolean;
 
 import Home from "~views/Home"
 import WalletView from "~views/wallet";
