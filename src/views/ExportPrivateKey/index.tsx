@@ -23,7 +23,7 @@ export default function Account() {
     const handleInputPas = (e) => {
         setPassword(e.target.value)
     }
-    const renderButton = useCallback(() => {
+    const renderButton = useCallback((handleExportPriv) => {
         return !priv ? <div
             onClick={handleExportPriv}
             className="h-12 ml-4 mr-4 mt-52 rounded-3xl text-center border-none  text-white bg-[#373737] hover:!text-white
@@ -44,7 +44,7 @@ export default function Account() {
 
     }, [priv])
 
-    const renderPriv = useCallback((password) => {
+    const renderPriv = useCallback((password, handleInputPas) => {
         return !priv ? <input value={password} onInput={handleInputPas} type="password" placeholder="Password" className=" text-white border border-[#707072] rounded-md bg-black w-full block p-4  mt-16" />
             : <div className="bg-[#333332] w-full p-3 mt-10 rounded-md  break-words h-20 text-white leading-2 cursor-pointer text-base" onClick={() => copyToClipboard(priv)}>
                 {priv}
@@ -67,8 +67,8 @@ export default function Account() {
         <div className="h-full p-3 w-full">
             <p className=" text-3xl text-white  mt-2 font-semibold">Export Private Key</p>
             {renderDecs()}
-            {renderPriv(password)}
-            {renderButton()}
+            {renderPriv(password, handleInputPas)}
+            {renderButton(handleExportPriv)}
         </div>
     </div>
 }
