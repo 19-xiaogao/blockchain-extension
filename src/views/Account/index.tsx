@@ -3,22 +3,16 @@ import { NavBar } from 'antd-mobile'
 import { CloseOutlined, PlusOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
 import { exportAddress, getStorageWalletList, setCurrentWalletStorage, setStorageWalletList } from "~background";
-import { copyToClipboard, formatAddress } from "~utils";
+import { formatAddress } from "~utils";
+import useGetWalletList from "~hooks/useGetWalletList";
 
 export default function Account() {
     const navigate = useNavigate()
-    const [list, setList] = useState([])
+    const { list, getWalletList } = useGetWalletList()
     const back = () => {
         console.log("click back icon");
     }
 
-    useEffect(() => {
-        getWalletList()
-    }, [])
-    const getWalletList = async () => {
-        const result = await getStorageWalletList()
-        setList(result as any)
-    }
 
     const handleAddressClick = async () => {
         const HDWallet = await exportAddress(list.length)

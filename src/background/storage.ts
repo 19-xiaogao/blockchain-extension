@@ -1,6 +1,7 @@
 import { Storage } from "@plasmohq/storage"
 import { defaultNetwork } from "./constant"
 import type { IRPC } from "~types";
+import * as anfsJs from "anfs-js"
 import cryptoJs from "crypto-js";
 function removePropertyFromArray(arr, property) {
     return arr.map(obj => {
@@ -114,7 +115,7 @@ export async function setStorageWalletList(wallet: Object) {
 
 }
 
-export async function getStorageWalletList() {
+export async function getStorageWalletList():Promise<anfsJs.HDNodeWallet[]> {
     return walletListStorage.get(walletList)
 }
 

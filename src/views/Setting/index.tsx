@@ -3,7 +3,7 @@ import { NavBar } from "antd-mobile";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { removeStoragePassword } from '~background'
-import useGetAddress from "~hooks";
+import useGetAddress from "~hooks/useGetAddress";
 import { formatAddress } from "~utils";
 export default function Setting() {
     const navigate = useNavigate()

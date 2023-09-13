@@ -4,7 +4,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined, EditOutlined, FundViewOutlined }
 import { useNavigate } from "react-router-dom"
 import { exportAddress, getStorageWalletList, setCurrentWalletStorage, setStorageWalletList } from "~background";
 import { copyToClipboard, formatAddress } from "~utils";
-import useGetAddress from "~hooks";
+import useGetAddress from "~hooks/useGetAddress";
 
 export default function Account() {
     const navigate = useNavigate()

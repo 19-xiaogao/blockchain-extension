@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavBar } from 'antd-mobile'
 import { CloseOutlined, ArrowLeftOutlined, ArrowDownOutlined, LoadingOutlined } from "@ant-design/icons"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { formatAddress } from "~utils";
 export default function SendTo() {
     const navigate = useNavigate()
+    const location = useLocation();
+    const address = location.state?.address;
     const [open, setOpen] = useState(false)
     const back = () => {
         console.log("click back icon");
@@ -12,6 +14,10 @@ export default function SendTo() {
     const handleSetOpen = (bol: boolean) => {
         setOpen(bol)
     }
+    useEffect(() => {
+        console.log(address);
+
+    }, [])
     return <div className="w-full h-full">
         <NavBar backArrow={<ArrowLeftOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/sendTo')} />} onBack={back}
             right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => navigate('/')} />}>
@@ -40,8 +46,6 @@ export default function SendTo() {
                             Balance: 0.012ETH
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <div className="mt-9">
@@ -51,13 +55,13 @@ export default function SendTo() {
                         <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                         <div className="ml-3">
                             <div className="text-white  text-lg">Account 2</div>
-                            <div className="text-dark-gray">{formatAddress("0xAa5A88bdA5BB06cb73Ee0af753D3f4A2486dd845")}</div>
+                            <div className="text-dark-gray">{formatAddress(address)}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div
-                onClick={() =>navigate("/trading")}
+                onClick={() => navigate("/trading")}
                 className=" h-12  mt-52 rounded-3xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
                     flex items-center justify-center cursor-pointer text-base">
                 <span> Review Send</span>
