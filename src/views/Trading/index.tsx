@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useGetAddress from "~hooks/useGetAddress";
 import useGetStorageCurrentRPC from "~hooks/useGetStorageCurrentRPC";
 import useGetGasPrice from "~hooks/useGetGasPrice";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { sendTransaction } from "~background";
 
 export default function Trading() {
@@ -17,10 +17,15 @@ export default function Trading() {
     const amount = location.state?.amount;
     const { gasPrice } = useGetGasPrice({ from: address, to: toAddress, value: amount, chainId: rpc.chainId })
     const [isShowDetail, setIsShowDetail] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     const handleConfigClick = () => {
+        setLoading(true)
         sendTransaction(toAddress, amount).then(res => {
             console.log(res);
+            message.success('transaction is success');
+            navigate('/records')
+            setLoading(false);
         })
     }
 
@@ -77,15 +82,16 @@ export default function Trading() {
         </div>
         <div className=" fixed w-full  right-0  pl-4 pr-4 bottom-0 bg-[#101014] z-10 pt-2 pb-2">
             <div className="w-full flex items-center justify-between">
-                <div
+                <Button
                     onClick={() => navigate(-1)}
-                    className="p-3 w-[49%] rounded-2xl w-hull border-none  text-white bg-[#1d1f22]  hover:!text-white
+                    className="p-3 w-[49%] h-full rounded-2xl w-hull border-none  text-white bg-[#1d1f22]  hover:!text-white
                     cursor-pointer text-base text-center">
                     <span> Cancel</span>
-                </div>
+                </Button>
                 <Button
                     onClick={handleConfigClick}
-                    className="p-3 w-[49%] rounded-2xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
+                    loading={loading}
+                    className="p-3 w-[49%]  h-full rounded-2xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
                     cursor-pointer text-base">
                     <span> Confirm</span>
                 </Button>
