@@ -1,4 +1,4 @@
-import { getStorageMnemonic, getStoragePassword } from "./storage"
+import { getCurrentWalletStorage, getStorageMnemonic, getStoragePassword } from "./storage"
 import walletCrypto from "./crpyto"
 import * as anfsJs from "anfs-js"
 
@@ -34,7 +34,9 @@ export const exportAddress = async (index: number) => {
 
 //获取当前地址的私钥
 export const deCurrentHDWalletPrivateKey = async (password: string) => {
-    const wallet = await usePasswordExportWallet(password)
-    if (!wallet) return false
+    const _password = await getStoragePassword()
+    const _wallet: anfsJs.HDNodeWallet = await getCurrentWalletStorage()
+    const wallet = walletCrypto.mnemonicToWallet(_wallet.mnemonic.phrase).derivePath(_wallet.path)
+    if (_password !== password) return false
     return anfsJs.HDNodeWallet.fromMnemonic(wallet.mnemonic, wallet.path).privateKey;
 }

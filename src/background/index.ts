@@ -1,5 +1,7 @@
 export * from "./storage"
 export * from "./wallet"
+export * from "./transaction"
+
 export function closeNewTabPage() {
     // 获取当前标签页的信息
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {

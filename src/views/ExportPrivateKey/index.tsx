@@ -11,8 +11,13 @@ export default function Account() {
     const [priv, setPriv] = useState("")
     const [password, setPassword] = useState('')
     const handleExportPriv = async () => {
+        const privKey = await deCurrentHDWalletPrivateKey(password)
+        console.log(privKey, "privKey");
+
         try {
             const privKey = await deCurrentHDWalletPrivateKey(password)
+            console.log(privKey, "privKey");
+
             if (!privKey) setPriv('')
             setPriv(privKey as string)
         } catch (error) {

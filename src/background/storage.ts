@@ -1,6 +1,7 @@
 import { Storage } from "@plasmohq/storage"
 import { defaultNetwork } from "./constant"
 import type { IRPC } from "~types";
+import cryptoJs from "crypto-js";
 function removePropertyFromArray(arr, property) {
     return arr.map(obj => {
         const { [property]: prop, ...rest } = obj;
@@ -107,7 +108,8 @@ export async function setStorageWalletList(wallet: Object) {
     if (walletLs) {
         return walletListStorage.set(walletList, [...walletLs, wallet])
     }
-    return walletListStorage.set(walletList, removePropertyFromArray([wallet], "mnemonic"))
+    // return walletListStorage.set(walletList, removePropertyFromArray([wallet], "mnemonic"))
+    return walletListStorage.set(walletList, [wallet])
 
 
 }
@@ -126,12 +128,15 @@ const currentWallet = "CURRENT_WALLET"
 const currentWalletStorage = new Storage({ area: "local" })
 
 export async function setCurrentWalletStorage(wallet: any) {
-    delete wallet["mnemonic"]
-    return currentWalletStorage.set(currentWallet, wallet)
+    const passwordKey = await getStoragePassword()
+    const encryptedWallet = cryptoJs.AES.encrypt(JSON.stringify(wallet), passwordKey).toString()
+    return currentWalletStorage.set(currentWallet, encryptedWallet)
 }
 
 export async function getCurrentWalletStorage() {
-    return currentWalletStorage.get(currentWallet)
+    const passwordKey = await getStoragePassword()
+    const wallet = await currentWalletStorage.get(currentWallet)
+    return JSON.parse(cryptoJs.AES.decrypt(wallet, passwordKey).toString(cryptoJs.enc.Utf8))
 }
 
 export async function removeCurrentWalletStorage() {

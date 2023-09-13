@@ -9,6 +9,7 @@ export const useGetAddress = () => {
     }, [])
     const getAddress = async () => {
         const wallet: any = await getCurrentWalletStorage()
+
         setAddress(wallet.address)
     }
     return address
