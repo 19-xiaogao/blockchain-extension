@@ -7,9 +7,19 @@ import useGetAddressBalance from "~hooks/useGetAddressBalance";
 export default function SendTo() {
     const navigate = useNavigate()
     const location = useLocation();
+    const [amount, setAmount] = useState("");
     const address = location.state?.address;
     const [open, setOpen] = useState(false)
     const balance = useGetAddressBalance(address)
+
+    const handleAmount = e => {
+        setAmount(e.target.value.trim())
+    }
+    const handleTrading = () => {
+        navigate(`/trading`, { state: { toAddress: address, amount } })
+
+    }
+
     const back = () => {
         console.log("click back icon");
     }
@@ -31,6 +41,8 @@ export default function SendTo() {
                 <div className="bg-coin-bg h-20 rounded-xl overflow-hidden mt-2  pl-2 pr-2 flex items-center">
                     <div className="flex-1  pl-3 pr-2">
                         <input
+                            value={amount}
+                            onInput={handleAmount}
                             type="text"
                             className="h-10  appearance-none  
                             bg-coin-bg  w-full block border border-gray-100 text-xl text-white"
@@ -63,7 +75,7 @@ export default function SendTo() {
                 </div>
             </div>
             <div
-                onClick={() => navigate("/trading")}
+                onClick={handleTrading}
                 className=" h-12  mt-52 rounded-3xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
                     flex items-center justify-center cursor-pointer text-base">
                 <span> Review Send</span>
