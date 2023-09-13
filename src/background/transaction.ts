@@ -9,6 +9,8 @@ export const getCurrentJsonRpcProvider = async () => {
 export const getAddressBalance = async (address: anfsJs.ethers.AddressLike) => {
     const provider = (await getCurrentJsonRpcProvider()).provider
     const balance = await provider.getBalance(address)
+    console.log(balance,"balance");
+    
     return anfsJs.formatEther(balance)
 }
 
@@ -18,7 +20,7 @@ export const sendTransaction = async (to: anfsJs.ethers.AddressLike, value) => {
     const provider = (await getCurrentJsonRpcProvider()).provider
     const tx = await wallet.connect(provider).sendTransaction({
         to: to,
-        value: amount
+        value: amount,
     })
     return tx
 }

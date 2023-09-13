@@ -4,11 +4,14 @@ import { CloseOutlined, ArrowLeftOutlined, ArrowDownOutlined, LoadingOutlined } 
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { formatAddress } from "~utils";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
+import useGetAddress from "~hooks/useGetAddress";
 export default function SendTo() {
     const navigate = useNavigate()
     const location = useLocation();
     const [amount, setAmount] = useState("");
-    const address = location.state?.address;
+    const address = useGetAddress()
+    const toAddress = location.state?.address;
+
     const [open, setOpen] = useState(false)
     const balance = useGetAddressBalance(address)
 
@@ -16,7 +19,7 @@ export default function SendTo() {
         setAmount(e.target.value.trim())
     }
     const handleTrading = () => {
-        navigate(`/trading`, { state: { toAddress: address, amount } })
+        navigate(`/trading`, { state: { toAddress: toAddress, amount } })
 
     }
 

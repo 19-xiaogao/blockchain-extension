@@ -5,17 +5,25 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useGetAddress from "~hooks/useGetAddress";
 import useGetStorageCurrentRPC from "~hooks/useGetStorageCurrentRPC";
 import useGetGasPrice from "~hooks/useGetGasPrice";
+import { Button } from "antd";
+import { sendTransaction } from "~background";
 
 export default function Trading() {
     const navigate = useNavigate()
     const location = useLocation();
     const address = useGetAddress();
     const { rpc } = useGetStorageCurrentRPC()
-
     const toAddress = location.state?.toAddress;
     const amount = location.state?.amount;
     const { gasPrice } = useGetGasPrice({ from: address, to: toAddress, value: amount, chainId: rpc.chainId })
     const [isShowDetail, setIsShowDetail] = useState(true)
+
+    const handleConfigClick = () => {
+        sendTransaction(toAddress, amount).then(res => {
+            console.log(res);
+        })
+    }
+
     return <div className="p-4 relative overflow-y-scroll scrollbar  h-full overflow-x-hidden pb-20">
         <div className="flex justify-center text-base">
             <span className="text-white">Account 1</span>
@@ -75,11 +83,12 @@ export default function Trading() {
                     cursor-pointer text-base text-center">
                     <span> Cancel</span>
                 </div>
-                <div
+                <Button
+                    onClick={handleConfigClick}
                     className="p-3 w-[49%] rounded-2xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
                     cursor-pointer text-base">
                     <span> Confirm</span>
-                </div>
+                </Button>
             </div>
         </div>
     </div>

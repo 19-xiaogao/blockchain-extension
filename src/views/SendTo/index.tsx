@@ -23,7 +23,7 @@ export default function SendTo() {
 
     const renderWalletList = useCallback(() => {
 
-        return list.map((v, index) => (<div key={index} onClick={() =>  navigate(`/send`, { state: { address: v.address } })} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+        return list.map((v, index) => (<div key={index} onClick={() => navigate(`/send`, { state: { address: v.address } })} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
             <div className="flex items-center">
                 <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                 <div className="ml-3">
