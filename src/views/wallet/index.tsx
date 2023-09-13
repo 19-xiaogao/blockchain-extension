@@ -6,12 +6,14 @@ import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import SaveMnemonic from "~components/saveMnemonic"
 import useGetAddress from "~hooks/useGetAddress";
+import useGetAddressBalance from "~hooks/useGetAddressBalance";
 export default function WalletView() {
     const address = useGetAddress()
+    const balance = useGetAddressBalance(address)
     const navigate = useNavigate()
     // TODO:h-auto and overflow-y-auto bug
     return <div className="h-auto overflow-y-auto">
-        <h1 className="text-center font-black text-3xl text-white font-mono mt-9">💵0.12</h1>
+        <h1 className="text-center font-black text-3xl text-white font-mono mt-9">💵{balance}</h1>
         <p className="text-center">
             <Tooltip
                 title='Click to copy address'
@@ -37,10 +39,10 @@ export default function WalletView() {
                     <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                     <div className="ml-3">
                         <div className="text-white  text-lg">Ethereum</div>
-                        <div className="text-dark-gray">0.0ETH</div>
+                        <div className="text-dark-gray">{balance}ETH</div>
                     </div>
                 </div>
-                <div className="text-dark-gray text-base">💵0.12</div>
+                <div className="text-dark-gray text-base">💵{balance}</div>
             </div>
             <div className="flex  justify-center mt-2">
                 <Button size="large" icon={<PlusOutlined />}

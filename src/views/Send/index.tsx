@@ -3,11 +3,13 @@ import { NavBar } from 'antd-mobile'
 import { CloseOutlined, ArrowLeftOutlined, ArrowDownOutlined, LoadingOutlined } from "@ant-design/icons"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { formatAddress } from "~utils";
+import useGetAddressBalance from "~hooks/useGetAddressBalance";
 export default function SendTo() {
     const navigate = useNavigate()
     const location = useLocation();
     const address = location.state?.address;
     const [open, setOpen] = useState(false)
+    const balance = useGetAddressBalance(address)
     const back = () => {
         console.log("click back icon");
     }
@@ -15,7 +17,7 @@ export default function SendTo() {
         setOpen(bol)
     }
     useEffect(() => {
-        console.log(address);
+        console.log(balance);
 
     }, [])
     return <div className="w-full h-full">
@@ -43,7 +45,7 @@ export default function SendTo() {
                             <ArrowDownOutlined />
                         </div>
                         <div className="text-dark-gray mt-1 text-xs cursor-pointer">
-                            Balance: 0.012ETH
+                            Balance:  {balance} ETH
                         </div>
                     </div>
                 </div>
