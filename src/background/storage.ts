@@ -1,5 +1,6 @@
 import { Storage } from "@plasmohq/storage"
-
+import { defaultNetwork } from "./constant"
+import type { IRPC } from "~types";
 function removePropertyFromArray(arr, property) {
     return arr.map(obj => {
         const { [property]: prop, ...rest } = obj;
@@ -45,16 +46,39 @@ const RPCList = "PRC_LIST"
 const RPCListStorage = new Storage({ area: "local" })
 
 export async function setStorageRPC(rpc: string[]) {
+
     return RPCListStorage.set(RPCList, rpc)
 }
 
-export async function getStorageRPC() {
+export async function getStorageRPC(): Promise<IRPC[]> {
+    const _rpc = await RPCListStorage.get(RPCList)
+    if (!_rpc) await RPCListStorage.set(RPCList, defaultNetwork)
     return RPCListStorage.get(RPCList)
 }
 
 export async function removeStorageRPC() {
     return RPCListStorage.remove(RPCList)
 }
+
+// 设置当前RPC
+const CURRENT_RPC = "CURRENT_RPC"
+const CurrentRpcStorage = new Storage({ area: "local" })
+
+export async function setStorageCurrentRPC(rpc) {
+
+    return CurrentRpcStorage.set(CURRENT_RPC, rpc)
+}
+
+export async function getStorageCurrentRPC(): Promise<IRPC> {
+
+    return CurrentRpcStorage.get(CURRENT_RPC)
+}
+
+export async function removeStorageCurrentRPC() {
+    return CurrentRpcStorage.remove(CURRENT_RPC)
+}
+
+
 
 
 // 判断用户是否保存相关助记词
