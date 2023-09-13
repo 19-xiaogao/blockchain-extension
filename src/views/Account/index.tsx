@@ -21,7 +21,7 @@ export default function Account() {
     }
 
     const handleAddressClick = async () => {
-        const HDWallet = await exportAddress(list.length - 1)
+        const HDWallet = await exportAddress(list.length)
         await setStorageWalletList(HDWallet)
         getWalletList()
     }
