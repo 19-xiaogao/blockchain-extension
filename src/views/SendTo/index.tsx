@@ -49,7 +49,7 @@ export default function SendTo() {
             right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => handleSetOpen(true)} />}>
             <span className=" text-white text-base">Send to</span>
         </NavBar>
-        <div className="h-full p-3 overflow-y-auto">
+        <div className="h-full p-3  pb-14 overflow-y-scroll scrollbar">
             <div>
                 <div className="text-lg  text-dark-gray">Recipient</div>
                 <input
@@ -68,7 +68,7 @@ export default function SendTo() {
                     <span className="text-white">Address book</span>
                 </div>
             </div>
-            <div className="h-auto">
+            <div className="h-auto ">
                 {renderWalletList()}
             </div>
         </div>

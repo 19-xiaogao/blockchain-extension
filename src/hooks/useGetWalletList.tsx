@@ -11,6 +11,8 @@ export const useGetWalletList = () => {
     }, [])
     const getWalletList = async () => {
         const result = await getStorageWalletList()
+        console.log(result);
+        
         setList(result)
     }
     return { list, getWalletList }

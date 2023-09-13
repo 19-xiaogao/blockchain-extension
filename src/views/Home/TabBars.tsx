@@ -2,6 +2,7 @@
 import { TabBar } from 'antd-mobile'
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppstoreOutlined, MenuOutlined, SyncOutlined, WalletOutlined } from '@ant-design/icons';
+import React from 'react';
 const tabs = [
     {
         icon: <WalletOutlined />,

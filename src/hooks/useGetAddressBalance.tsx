@@ -9,7 +9,7 @@ export const useGetAddressBalance = (address: anfsJs.ethers.AddressLike) => {
     useEffect(() => {
         if (anfsJs.isAddress(address)) {
             getAddressBalance(address).then(res => {
-                setBalance(res)
+                setBalance(res.substring(0,8))
             })
         }
 
