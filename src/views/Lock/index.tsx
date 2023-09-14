@@ -39,7 +39,7 @@ export default function Lock() {
                 </span>
             </div>
             <div className="mt-6">
-                <input type="password" value={password} onInput={handleInputPassword} className=" bg-black w-full  h-14 border border-[#1d1f22] hover:border-[#707072] focus:border-[#707072]  rounded-md pl-5  pr-5 text-base text-white" placeholder="Password" />
+                <input type="password" onKeyDown={(e) => e.key === 'Enter' && handleUnLock()} value={password} onInput={handleInputPassword} className=" bg-black w-full  h-14 border border-[#1d1f22] hover:border-[#707072] focus:border-[#707072]  rounded-md pl-5  pr-5 text-base text-white" placeholder="Password" />
             </div>
         </div>
         <div onClick={handleUnLock} className="p-3 w-full rounded-2xl bg-orange text-center cursor-pointer mt-40 hover:bg-[#bd512e]">
