@@ -4,8 +4,11 @@ import React from "react";
 import { Dropdown } from "antd";
 import DropdownRender from "~components/DropdownComponents"
 import usePRC from "~hooks/usePRC"
+import useWallet from "~hooks/useWallet";
+
 export default function Header() {
     const navigate = useNavigate()
+    const wallet = useWallet()
     const { currentRPC, handleSetRPC } = usePRC()
 
     const handleClick = async (val) => {
@@ -14,7 +17,7 @@ export default function Header() {
     }
     return <div className="h-5 w-full flex justify-between items-center">
         <div onClick={() => navigate('/account')} className="h-full flex items-center  p-4 rounded-xl bg-dark-200 cursor-pointer hover:bg-dark-100">
-            <span className="text-white mr-1">Account 1</span>
+            <span className="text-white mr-1">{wallet.name}</span>
             <CaretDownOutlined className=" text-white" />
         </div>
         <div className="h-full flex items-center">

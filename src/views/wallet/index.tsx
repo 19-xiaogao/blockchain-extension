@@ -5,11 +5,11 @@ import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import SaveMnemonic from "~components/saveMnemonic"
-import useGetAddress from "~hooks/useWallet";
+import useWallet from "~hooks/useWallet";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
 export default function WalletView() {
-    const address = useGetAddress()
-    const balance = useGetAddressBalance(address)
+    const wallet = useWallet()
+    const balance = useGetAddressBalance(wallet.address)
     const navigate = useNavigate()
     // TODO:h-auto and overflow-y-auto bug
     return <div className="h-auto overflow-y-auto">
@@ -20,7 +20,7 @@ export default function WalletView() {
                 placement='bottom'
                 mouseEnterDelay={0.05}
             >
-                <span onClick={() => (copyToClipboard(address))} className="text-font-gray cursor-pointer text-center mt-2  text-base hover:text-white">{formatAddress(address)}</span>
+                <span onClick={() => (copyToClipboard(wallet.address))} className="text-font-gray cursor-pointer text-center mt-2  text-base hover:text-white">{formatAddress(wallet.address)}</span>
             </Tooltip>
         </p>
         <div className="flex items-center justify-center mt-4">

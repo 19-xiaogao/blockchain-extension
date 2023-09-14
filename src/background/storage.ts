@@ -9,6 +9,7 @@ function removePropertyFromArray(arr, property) {
     });
 }
 
+
 // 保存用户助记词的操作
 const MNEMONIC = "MNEMONIC"
 const WalletStorage = new Storage({ area: "local" })
@@ -104,18 +105,34 @@ const walletList = "WALLET_LIST"
 const walletListStorage = new Storage({ area: "local" })
 
 export async function setStorageWalletList(wallet: Object) {
+
+    const passwordKey = await getStoragePassword()
     const walletLs = await getStorageWalletList()
     if (walletLs) {
-        return walletListStorage.set(walletList, [...walletLs, wallet])
+        return walletListStorage.set(walletList, cryptoJs.AES.encrypt(JSON.stringify([...walletLs, wallet]), passwordKey).toString())
     }
     // return walletListStorage.set(walletList, removePropertyFromArray([wallet], "mnemonic"))
-    return walletListStorage.set(walletList, [wallet])
-
+    return walletListStorage.set(walletList, cryptoJs.AES.encrypt(JSON.stringify([wallet]), passwordKey).toString())
 
 }
 
-export async function getStorageWalletList(): Promise<IHDNodeWallet[]> {
-    return walletListStorage.get(walletList)
+export async function changeStorageWalletList(wallet) {
+    const passwordKey = await getStoragePassword()
+    const walletLs = await getStorageWalletList()
+    walletLs.forEach(element => {
+        if (element.address === wallet.address) {
+            element.name = wallet.name
+        }
+    });
+    walletListStorage.set(walletList, cryptoJs.AES.encrypt(JSON.stringify(walletLs), passwordKey).toString())
+}
+
+
+export async function getStorageWalletList(): Promise<any> {
+    const passwordKey = await getStoragePassword()
+    const walletLs = await walletListStorage.get(walletList)
+    if (!walletLs) return walletLs
+    return JSON.parse(cryptoJs.AES.decrypt(walletLs, passwordKey).toString(cryptoJs.enc.Utf8))
 }
 
 export async function removeStorageWalletList() {

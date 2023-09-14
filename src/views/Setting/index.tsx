@@ -33,7 +33,7 @@ export default function Setting() {
                 <div className="flex items-center justify-between">
                     <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                     <div className="ml-3">
-                        <div className="text-white  text-lg">Account 1</div>
+                        <div className="text-white  text-lg">{wallet.name}</div>
                         <span className="text-font-gray cursor-pointer text-center mt-2  text-base hover:text-white">{formatAddress(wallet.address)}</span>
                     </div>
                 </div>
