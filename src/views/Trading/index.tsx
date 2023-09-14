@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { formatAddress } from "~utils";
 import { SendOutlined } from "@ant-design/icons"
 import { useLocation, useNavigate } from "react-router-dom";
-import useGetAddress from "~hooks/useGetAddress";
+import useWallet from "~hooks/useWallet";
 import useGetStorageCurrentRPC from "~hooks/useGetStorageCurrentRPC";
 import useGetGasPrice from "~hooks/useGetGasPrice";
 import { Button, message } from "antd";
@@ -11,11 +11,11 @@ import { sendTransaction } from "~background";
 export default function Trading() {
     const navigate = useNavigate()
     const location = useLocation();
-    const address = useGetAddress();
+    const wallet = useWallet();
     const { rpc } = useGetStorageCurrentRPC()
     const toAddress = location.state?.toAddress;
     const amount = location.state?.amount;
-    const { gasPrice } = useGetGasPrice({ from: address, to: toAddress, value: amount, chainId: rpc.chainId })
+    const { gasPrice } = useGetGasPrice({ from: wallet.address, to: toAddress, value: amount, chainId: rpc.chainId })
     const [isShowDetail, setIsShowDetail] = useState(true)
     const [loading, setLoading] = useState(false)
 
@@ -32,7 +32,7 @@ export default function Trading() {
     return <div className="p-4 relative overflow-y-scroll scrollbar  h-full overflow-x-hidden pb-20">
         <div className="flex justify-center text-base">
             <span className="text-white">Account 1</span>
-            <span className=" ml-2 text-gray">({formatAddress(address)})</span>
+            <span className=" ml-2 text-gray">({formatAddress(wallet.address)})</span>
         </div>
         <div className=" flex flex-col items-center justify-center mt-8">
             <div className="bg-[#38383b] rounded-full w-16  h-16 flex items-center justify-center relative ">
@@ -62,7 +62,7 @@ export default function Trading() {
         <div className="rounded-xl w-full mt-2 overflow-hidden">
             <div className="p-2 pt-3 pb-3 flex items-center  justify-between bg-[#1b1d1f]">
                 <div className=" text-[#656568]">From</div>
-                <div className=" text-white"> {formatAddress(address)}</div>
+                <div className=" text-white"> {formatAddress(wallet.address)}</div>
             </div>
             <div className="p-2 pt-3 pb-3 flex items-center  justify-between bg-[#1b1d1f]">
                 <div className=" text-[#656568]">To</div>

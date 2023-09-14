@@ -1,28 +1,15 @@
 import { SettingOutlined, CaretDownOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Dropdown } from "antd";
 import DropdownRender from "~components/DropdownComponents"
-import type { IRPC } from "~types";
-import { getStorageCurrentRPC, setStorageCurrentRPC } from "~background";
-
+import usePRC from "~hooks/usePRC"
 export default function Header() {
     const navigate = useNavigate()
-
-    const [currentRPC, setCurrentRPC] = useState<IRPC>({ name: "", url: "", chainId: 0, blockChainBrowser: "", Currency: "" })
-
-    useEffect(() => {
-        getCurrentPRC()
-    }, [])
-
-    const getCurrentPRC = async () => {
-        const rpc = await getStorageCurrentRPC()
-        setCurrentRPC(rpc)
-    }
+    const { currentRPC, handleSetRPC } = usePRC()
 
     const handleClick = async (val) => {
-        await setStorageCurrentRPC(val)
-        setCurrentRPC(val)
+        handleSetRPC(val)
 
     }
     return <div className="h-5 w-full flex justify-between items-center">

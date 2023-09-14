@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import SaveMnemonic from "~components/saveMnemonic"
-import useGetAddress from "~hooks/useGetAddress";
+import useGetAddress from "~hooks/useWallet";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
 export default function WalletView() {
     const address = useGetAddress()

@@ -4,11 +4,11 @@ import { ArrowLeftOutlined, ArrowRightOutlined, EditOutlined, FundViewOutlined }
 import { useNavigate } from "react-router-dom"
 import { exportAddress, getStorageWalletList, setCurrentWalletStorage, setStorageWalletList } from "~background";
 import { copyToClipboard, formatAddress } from "~utils";
-import useGetAddress from "~hooks/useGetAddress";
+import useWallet from "~hooks/useWallet";
 
 export default function Account() {
     const navigate = useNavigate()
-    const address = useGetAddress()
+    const wallet = useWallet()
     const [list, setList] = useState([])
     const back = () => {
         console.log("click back icon");
@@ -44,12 +44,12 @@ export default function Account() {
                     <EditOutlined className=" text-white text-base" />
                 </div>
                 <div className=" border border-[#1d1f22] text-center p-2 ">
-                    <span className="text-[#5a5a5d] cursor-pointer" onClick={() => copyToClipboard(address)}>
-                        {formatAddress(address)}
+                    <span className="text-[#5a5a5d] cursor-pointer" onClick={() => copyToClipboard(wallet.address)}>
+                        {formatAddress(wallet.address)}
                     </span>
                 </div>
             </div>
-            <div className=" flex items-center justify-between bg-[#1b1d1f] p-4 rounded-xl mt-10 cursor-pointer" onClick={() => navigate('/exportPrivateKey')}> 
+            <div className=" flex items-center justify-between bg-[#1b1d1f] p-4 rounded-xl mt-10 cursor-pointer" onClick={() => navigate('/exportPrivateKey')}>
                 <div className=" text-base text-[#bc404b]">
                     Export private  key
                 </div>

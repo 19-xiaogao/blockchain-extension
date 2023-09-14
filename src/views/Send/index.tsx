@@ -4,16 +4,16 @@ import { CloseOutlined, ArrowLeftOutlined, ArrowDownOutlined, LoadingOutlined } 
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { formatAddress } from "~utils";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
-import useGetAddress from "~hooks/useGetAddress";
+import useWallet from "~hooks/useWallet";
 export default function SendTo() {
     const navigate = useNavigate()
     const location = useLocation();
     const [amount, setAmount] = useState("");
-    const address = useGetAddress()
+    const wallet = useWallet()
     const toAddress = location.state?.address;
 
     const [open, setOpen] = useState(false)
-    const balance = useGetAddressBalance(address)
+    const balance = useGetAddressBalance(wallet.address)
 
     const handleAmount = e => {
         setAmount(e.target.value.trim())
@@ -72,7 +72,7 @@ export default function SendTo() {
                         <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                         <div className="ml-3">
                             <div className="text-white  text-lg">Account 2</div>
-                            <div className="text-dark-gray">{formatAddress(address)}</div>
+                            <div className="text-dark-gray">{formatAddress(wallet.address)}</div>
                         </div>
                     </div>
                 </div>

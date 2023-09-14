@@ -3,11 +3,11 @@ import { NavBar } from "antd-mobile";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { removeStoragePassword } from '~background'
-import useGetAddress from "~hooks/useGetAddress";
+import useWallet from "~hooks/useWallet";
 import { formatAddress } from "~utils";
 export default function Setting() {
     const navigate = useNavigate()
-    const address = useGetAddress()
+    const wallet = useWallet()
 
     const back = () => {
         console.log("click back icon")
@@ -34,7 +34,7 @@ export default function Setting() {
                     <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                     <div className="ml-3">
                         <div className="text-white  text-lg">Account 1</div>
-                        <span className="text-font-gray cursor-pointer text-center mt-2  text-base hover:text-white">{formatAddress(address)}</span>
+                        <span className="text-font-gray cursor-pointer text-center mt-2  text-base hover:text-white">{formatAddress(wallet.address)}</span>
                     </div>
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
