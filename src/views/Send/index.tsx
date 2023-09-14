@@ -33,6 +33,10 @@ export default function SendTo() {
         console.log(balance);
 
     }, [])
+
+    const handleBalanceClick = () => {
+        setAmount(String(balance))
+    }
     return <div className="w-full h-full">
         <NavBar backArrow={<ArrowLeftOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/sendTo')} />} onBack={back}
             right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => navigate('/')} />}>
@@ -51,7 +55,7 @@ export default function SendTo() {
                             bg-coin-bg  w-full block border border-gray-100 text-xl text-white"
                             placeholder="0"
                         />
-                        <LoadingOutlined className=" text-orange" />
+                        {/* <LoadingOutlined className=" text-orange" /> */}
                     </div>
                     <div>
                         <div onClick={() => navigate('/selectAsset')} className="text-white flex items-center  bg-black rounded-3xl w-auto p-1 justify-around  cursor-pointer">
@@ -59,7 +63,7 @@ export default function SendTo() {
                             <span>ETH</span>
                             <ArrowDownOutlined />
                         </div>
-                        <div className="text-dark-gray mt-1 text-xs cursor-pointer">
+                        <div className="text-dark-gray mt-1 text-xs cursor-pointer" onClick={handleBalanceClick}>
                             Balance:  {balance} ETH
                         </div>
                     </div>
