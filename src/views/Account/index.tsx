@@ -16,7 +16,7 @@ export default function Account() {
 
     const handleAddressClick = async () => {
         const HDWallet = await exportAddress(list.length)
-        await setStorageWalletList(HDWallet)
+        await setStorageWalletList({ ...HDWallet, name: "Account " + (list.length + 1) })
         getWalletList()
     }
 
@@ -31,7 +31,7 @@ export default function Account() {
             <div className="flex items-center">
                 <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                 <div className="ml-3">
-                    <div className="text-white  text-lg">Account {index + 1}</div>
+                    <div className="text-white  text-lg">{v.name}</div>
                     <span className="text-font-gray cursor-pointer text-center mt-2  text-base hover:text-white">{formatAddress(v.address)}</span>
                 </div>
             </div>

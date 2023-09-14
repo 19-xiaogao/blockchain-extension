@@ -1,3 +1,4 @@
+import * as anfsJs from "anfs-js"
 export type Address = `0x${string}`;
 
 export interface IRPC {
@@ -7,4 +8,8 @@ export interface IRPC {
     Currency: string,
     blockChainBrowser: string
 
+}
+
+export interface IHDNodeWallet extends anfsJs.HDNodeWallet {
+    name: string
 }

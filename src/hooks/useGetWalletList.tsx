@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { getStorageWalletList } from "~background"
-import * as anfsJs from "anfs-js"
+import type { IHDNodeWallet } from "~types"
 
 export const useGetWalletList = () => {
-    const [list, setList] = useState<anfsJs.HDNodeWallet[]>([])
+    const [list, setList] = useState<IHDNodeWallet[]>([])
 
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export const useGetWalletList = () => {
     const getWalletList = async () => {
         const result = await getStorageWalletList()
         console.log(result);
-        
+
         setList(result)
     }
     return { list, getWalletList }
