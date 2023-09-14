@@ -71,8 +71,8 @@ export default function SendTo() {
                     <div className="flex items-center">
                         <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                         <div className="ml-3">
-                            <div className="text-white  text-lg">Account 2</div>
-                            <div className="text-dark-gray">{formatAddress(wallet.address)}</div>
+                            <div className="text-white  text-lg">Account</div>
+                            <div className="text-dark-gray">{formatAddress(toAddress)}</div>
                         </div>
                     </div>
                 </div>

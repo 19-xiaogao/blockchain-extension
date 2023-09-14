@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
-import { getGasPrice, getStorageCurrentRPC, } from "~background"
+import { getGasPrice } from "~background"
 import * as anfsJs from "anfs-js"
-import type { IRPC } from "~types"
-import { defaultNetwork } from "~background/constant"
 
 export const useGetStorageCurrentRPC = (request: anfsJs.ethers.TransactionRequest) => {
     const [gasPrice, setGasPrice] = useState<string | number>("")
@@ -10,7 +8,9 @@ export const useGetStorageCurrentRPC = (request: anfsJs.ethers.TransactionReques
         getGas()
     }, [])
     const getGas = async () => {
-        const result = await getGasPrice(request)
+        const result = await getGasPrice({ ...request, value: anfsJs.parseUnits(String(request.value), "wei") })
+        console.log(result);
+
         setGasPrice(result)
     }
     return { gasPrice, setGasPrice }
