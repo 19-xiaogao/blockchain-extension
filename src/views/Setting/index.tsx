@@ -3,11 +3,13 @@ import { NavBar } from "antd-mobile";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { removeStoragePassword } from '~background'
+import usePRC from "~hooks/usePRC";
 import useWallet from "~hooks/useWallet";
 import { formatAddress } from "~utils";
 export default function Setting() {
     const navigate = useNavigate()
     const wallet = useWallet()
+    const { currentRPC } = usePRC()
 
     const back = () => {
         console.log("click back icon")
@@ -15,6 +17,9 @@ export default function Setting() {
     const handleLockClick = async () => {
         await removeStoragePassword()
         navigate('/lock')
+    }
+    const handleRouter = () => {
+        window.open(currentRPC.blockChainBrowser + '/address/' + wallet.address)
     }
     return <div>
         <NavBar
@@ -39,10 +44,10 @@ export default function Setting() {
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
             </div>
-            <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
+            <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4 cursor-pointer" onClick={handleRouter}>
                 <div className=" text-white font-semibold">
                     <FundViewOutlined className=" text-lg" />
-                    <span className="text-white font-semibold ml-3">Extended View</span>
+                    <span className="text-white font-semibold ml-3">BlockChain View</span>
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
             </div>
