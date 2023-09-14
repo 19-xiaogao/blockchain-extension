@@ -13,7 +13,7 @@ export default function SendTo() {
     const toAddress = location.state?.address;
 
     const [open, setOpen] = useState(false)
-    const balance = useGetAddressBalance(wallet.address)
+    const { balance } = useGetAddressBalance(wallet.address)
 
     const handleAmount = e => {
         setAmount(e.target.value.trim())

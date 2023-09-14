@@ -7,13 +7,14 @@ import AddAccount from "~components/AddAccount"
 import useGetWalletList from "~hooks/useGetWalletList";
 import * as anfsJs from "anfs-js"
 import { message } from "antd";
+import useWallet from "~hooks/useWallet";
 
 export default function SendTo() {
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     const [toAddress, setToAddr] = useState("")
     const { list } = useGetWalletList()
-
+    const wallet = useWallet()
     const back = () => {
         console.log("click back icon");
     }
@@ -22,17 +23,17 @@ export default function SendTo() {
     }
 
     const renderWalletList = useCallback(() => {
-
-        return list.map((v, index) => (<div key={index} onClick={() => navigate(`/send`, { state: { address: v.address } })} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+        const _list = list.filter(v => v.address != wallet.address)
+        return _list.map((v, index) => (<div key={index} onClick={() => navigate(`/send`, { state: { address: v.address } })} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
             <div className="flex items-center">
                 <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                 <div className="ml-3">
-                    <div className="text-white  text-lg">Account {index + 1}</div>
+                    <div className="text-white  text-lg">{v.name}</div>
                     <div className="text-dark-gray">{formatAddress(v.address)}</div>
                 </div>
             </div>
         </div>))
-    }, [list])
+    }, [list, wallet])
 
     const handleInputAddress = (v) => {
         const addr = v.target.value.trim()

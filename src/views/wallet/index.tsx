@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import { formatAddress, copyToClipboard } from "~utils"
 import { Tooltip } from 'antd';
 import { Button } from 'antd';
-import { PlusOutlined, SendOutlined } from "@ant-design/icons"
+import { LoadingOutlined, PlusOutlined, SendOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import SaveMnemonic from "~components/saveMnemonic"
 import useWallet from "~hooks/useWallet";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
 export default function WalletView() {
     const wallet = useWallet()
-    const balance = useGetAddressBalance(wallet.address)
+    const { balance, balanceLoading } = useGetAddressBalance(wallet.address)
     const navigate = useNavigate()
     // TODO:h-auto and overflow-y-auto bug
     return <div className="h-auto overflow-y-auto">
-        <h1 className="text-center font-black text-3xl text-white font-mono mt-9">💵{balance}</h1>
+        <h1 className="text-center font-black text-3xl text-white font-mono mt-9">
+            💵 {balanceLoading ? <LoadingOutlined /> : balance}
+        </h1>
         <p className="text-center">
             <Tooltip
                 title='Click to copy address'
