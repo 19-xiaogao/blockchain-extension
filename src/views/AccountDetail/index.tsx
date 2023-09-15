@@ -36,7 +36,7 @@ export default function Account() {
         console.log("click back icon");
     }
     return <div className="w-full h-full">
-        <NavBar onBack={back} backArrow={<ArrowLeftOutlined onClick={() => navigate('/setting')} className=" text-font-gray text-xl  cursor-pointer" />}>
+        <NavBar onBack={back} backArrow={<ArrowLeftOutlined onClick={() => navigate(-1)} className=" text-font-gray text-xl  cursor-pointer" />}>
             <span className=" text-white text-base">{wallet.name}</span>
         </NavBar>
         <div className="h-full p-3 overflow-y-auto">

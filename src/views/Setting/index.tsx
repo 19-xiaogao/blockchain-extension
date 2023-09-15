@@ -58,27 +58,27 @@ export default function Setting() {
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
             </div>
-            <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
+            {/* <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
                 <div className=" text-white font-semibold">
                     <FundViewOutlined className=" text-lg" />
                     <span className="text-white font-semibold ml-3">Connected dapps</span>
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
-            </div>
-            <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
+            </div> */}
+            {/* <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
                 <div className=" text-white font-semibold">
                     <FundViewOutlined className=" text-lg" />
                     <span className="text-white font-semibold ml-3">Show recovery phrase</span>
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
-            </div>
-            <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
+            </div> */}
+            {/* <div className="flex items-center justify-between bg-[#1b1d1f] p-3 rounded-xl mt-4">
                 <div className=" text-white font-semibold">
                     <FundViewOutlined className=" text-lg" />
                     <span className="text-white font-semibold ml-3">Developer settings</span>
                 </div>
                 <ArrowRightOutlined className="text-[#9f9fa1] text-lg" />
-            </div>
+            </div> */}
         </div>
     </div >
 }

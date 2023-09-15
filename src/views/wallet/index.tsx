@@ -41,10 +41,10 @@ export default function WalletView() {
                     <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                     <div className="ml-3">
                         <div className="text-white  text-lg">Ethereum</div>
-                        <div className="text-dark-gray">{balance}ETH</div>
+                        {/* <div className="text-dark-gray">{balance}</div> */}
                     </div>
                 </div>
-                <div className="text-dark-gray text-base">💵{balance}</div>
+                <div className="text-base text-white">{balance} ETH</div>
             </div>
             <div className="flex  justify-center mt-2">
                 <Button size="large" icon={<PlusOutlined />}
