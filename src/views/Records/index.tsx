@@ -25,7 +25,7 @@ export default function WalletView() {
                 <div className=" text-red text-base font-semibold"> - {Number(v.value.substring(0, 8))} ETH</div>
             </div>
         ))
-    }, [list, currentRPC])
+    }, [list, currentRPC,wallet])
 
 
     return <div className="p-4">
