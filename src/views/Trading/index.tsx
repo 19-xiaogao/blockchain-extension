@@ -6,7 +6,8 @@ import useWallet from "~hooks/useWallet";
 import useGetStorageCurrentRPC from "~hooks/useGetStorageCurrentRPC";
 import useGetGasPrice from "~hooks/useGetGasPrice";
 import { Button, message } from "antd";
-import { sendTransaction } from "~background";
+import { sendTransaction, addTxRecordsStorage } from "~background";
+import * as anfsJs from "anfs-js"
 
 export default function Trading() {
     const navigate = useNavigate()
@@ -16,13 +17,25 @@ export default function Trading() {
     const toAddress = location.state?.toAddress;
     const amount = location.state?.amount;
     const { gasPrice } = useGetGasPrice({ from: wallet.address, to: toAddress, value: amount, chainId: rpc.chainId })
-    const [isShowDetail, setIsShowDetail] = useState(true)
+    const [isShowDetail, setIsShowDetail] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const handleConfigClick = () => {
         setLoading(true)
-        sendTransaction(toAddress, amount).then(res => {
+        sendTransaction(toAddress, Number(amount) + Number(gasPrice)).then(res => {
             console.log(res);
+            addTxRecordsStorage({
+                type: "Send",
+                tx: res.hash,
+                from: wallet.address,
+                to: res.to,
+                netWork: rpc.name,
+                netWorkFees: gasPrice,
+                nonce: res.nonce,
+                success: "Pending",
+                chainId: String(res.chainId),
+                value: anfsJs.formatEther(res.value)
+            })
             message.success('transaction is success');
             navigate('/records')
             setLoading(false);
@@ -31,7 +44,7 @@ export default function Trading() {
 
     return <div className="p-4 relative overflow-y-scroll scrollbar  h-full overflow-x-hidden pb-20">
         <div className="flex justify-center text-base">
-            <span className="text-white">Account 1</span>
+            <span className="text-white">{wallet.name}</span>
             <span className=" ml-2 text-gray">({formatAddress(wallet.address)})</span>
         </div>
         <div className=" flex flex-col items-center justify-center mt-8">

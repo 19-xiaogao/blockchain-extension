@@ -177,3 +177,23 @@ export async function getTemMneStorage() {
 export async function removeTemMneStorage() {
     return temporarilySaveStorage.remove(temporarilySaveMnemonic)
 }
+
+
+// 保存交易记录
+
+const txRecords = "TX_RECORDS"
+const txRecordsStorage = new Storage({ area: "local" })
+
+export async function addTxRecordsStorage(tx) {
+    const txList = await getTxRecordsStorage()
+    if (!txList) return txRecordsStorage.set(txRecords, [tx])
+    txRecordsStorage.set(txRecords, [...txList, tx])
+}
+
+export async function getTxRecordsStorage(): Promise<any[]> {
+    return txRecordsStorage.get(txRecords)
+}
+
+export async function removeTxRecordsStorage() {
+    return txRecordsStorage.remove(txRecords)
+}

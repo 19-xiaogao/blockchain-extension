@@ -8,9 +8,7 @@ export const useGetStorageCurrentRPC = (request: anfsJs.ethers.TransactionReques
         getGas()
     }, [])
     const getGas = async () => {
-        const result = await getGasPrice({ ...request, value: anfsJs.parseUnits(String(request.value), "wei") })
-        console.log(result);
-
+        const result = await getGasPrice({ ...request, value: anfsJs.parseUnits(String(request.value)) })
         setGasPrice(result)
     }
     return { gasPrice, setGasPrice }

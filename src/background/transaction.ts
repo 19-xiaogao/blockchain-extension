@@ -15,7 +15,7 @@ export const getAddressBalance = async (address: anfsJs.ethers.AddressLike) => {
 }
 
 export const sendTransaction = async (to: anfsJs.ethers.AddressLike, value) => {
-    const amount = anfsJs.parseEther(value)
+    const amount = anfsJs.parseEther(String(value))
     const _wallet = await getCurrentWalletStorage()
     const wallet = anfsJs.HDNodeWallet.fromPhrase(_wallet.mnemonic.phrase, "", _wallet.path)
     const provider = (await getCurrentJsonRpcProvider()).provider
@@ -29,4 +29,17 @@ export const getGasPrice = async (request: anfsJs.ethers.TransactionRequest) => 
     const provider = (await getCurrentJsonRpcProvider()).provider
     const gas = await provider.estimateGas(request)
     return anfsJs.formatEther(gas)
+}
+
+// 查询交易是否成功
+export const getTxType = async (txhash: string) => {
+    const provider = (await getCurrentJsonRpcProvider()).provider
+    const result = await provider.getTransaction(txhash)
+
+    if (result != null) {
+
+        return true
+    }
+    else return false
+
 }

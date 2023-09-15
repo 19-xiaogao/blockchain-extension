@@ -10,6 +10,13 @@ export const formatAddress = (address: Address | string) => {
     return result;
 }
 
+export const formatTx = (address: Address | string) => {
+    const prefix = address.slice(0, 6);
+    const suffix = address.slice(-4);
+    const result = prefix + "..." + suffix;
+    return result;
+}
+
 // copy content to clipboard.
 export function copyToClipboard(text: string) {
     const textarea = document.createElement('textarea');
