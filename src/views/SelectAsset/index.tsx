@@ -15,7 +15,7 @@ export default function SendTo() {
         setOpen(bol)
     }
     return <div className="w-full h-full">
-        <NavBar backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/selectAsset')} />} onBack={back}
+        <NavBar backArrow={<CloseOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate(-1)} />} onBack={back}
             right={<PlusOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => handleSetOpen(true)} />}>
             <span className=" text-white text-base">Select an asset</span>
         </NavBar>

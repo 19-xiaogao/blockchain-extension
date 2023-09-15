@@ -65,9 +65,9 @@ export default function SendTo() {
                 <div className=" rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
                     <span className="text-white">My accounts</span>
                 </div>
-                <div className="rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
+                {/* <div className="rounded-2xl border border-white p-2 pl-4 pr-4 bg-dark mr-2 cursor-pointer">
                     <span className="text-white">Address book</span>
-                </div>
+                </div> */}
             </div>
             <div className="h-auto ">
                 {renderWalletList()}
