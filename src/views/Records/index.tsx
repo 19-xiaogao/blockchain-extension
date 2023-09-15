@@ -4,16 +4,17 @@ import { formatAddress } from "~utils";
 import { useNavigate } from "react-router-dom"
 import useGetTxRecords from "~hooks/useGetTxRecords";
 import usePRC from "~hooks/usePRC";
+import useWallet from "~hooks/useWallet";
 export default function WalletView() {
     const navigate = useNavigate()
-
+    const wallet = useWallet()
     const { list } = useGetTxRecords()
     const { currentRPC } = usePRC()
 
     const renderTxList = useCallback(() => {
-        return list.filter(v => v.chainId == currentRPC.chainId).map(v => (
+        return list.filter(v => v.chainId == currentRPC.chainId && v.from === wallet.address).map(v => (
 
-            <div onClick={() => navigate('/recordDetail', { state: { txs: v } })} className="rounded-lg p-3 bg-[#1d1f22] flex items-center justify-between cursor-pointer">
+            <div onClick={() => navigate('/recordDetail', { state: { txs: v } })} className="rounded-lg p-3 bg-[#1d1f22] mt-4 flex items-center justify-between cursor-pointer">
                 <div className="flex items-center">
                     <SwapOutlined className="text-white text-2xl" />
                     <div className="ml-2">
