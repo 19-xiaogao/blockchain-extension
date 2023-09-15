@@ -47,7 +47,7 @@ export default function RecordDetail() {
                 <div className="p-2 pt-3 pb-3 flex items-center  justify-between">
                     <div className=" text-[#656568]">Transactions Hash</div>
                     <Tooltip
-                        title={address}
+                        title={txs.tx}
                         placement='top'
                         mouseEnterDelay={0.05}
                     >
