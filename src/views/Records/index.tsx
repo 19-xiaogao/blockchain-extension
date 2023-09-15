@@ -12,7 +12,7 @@ export default function WalletView() {
     const { currentRPC } = usePRC()
 
     const renderTxList = useCallback(() => {
-        return list.filter(v => v.chainId == currentRPC.chainId && v.from === wallet.address).map(v => (
+        return list.filter(v => v.chainId == currentRPC.chainId && v.from === wallet.address).reverse().map(v => (
 
             <div onClick={() => navigate('/recordDetail', { state: { txs: v } })} className="rounded-lg p-3 bg-[#1d1f22] mt-4 flex items-center justify-between cursor-pointer">
                 <div className="flex items-center">

@@ -42,7 +42,7 @@ export default function RecordDetail() {
             <div className="rounded-xl w-full mt-2 overflow-hidden bg-[#1b1d1f]">
                 <div className="p-2 pt-3 pb-3 flex items-center  justify-between">
                     <div className=" text-[#656568]">Status</div>
-                    <div className=" text-white"> Success</div>
+                    <div className=" text-white"> {status}</div>
                 </div>
                 <div className="p-2 pt-3 pb-3 flex items-center  justify-between">
                     <div className=" text-[#656568]">Transactions Hash</div>
