@@ -1,10 +1,12 @@
 import { ArrowLeftOutlined } from "@ant-design/icons"
 import { NavBar } from "antd-mobile"
-import React from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-
+import useContract from "~hooks/useContract"
 export default function AddToken() {
   const navigate = useNavigate()
+  const [contractAddress, setCOntractAddress] = useState("")
+  const contractMessage = useContract(contractAddress);
   const back = () => {
     console.log("click back icon")
   }

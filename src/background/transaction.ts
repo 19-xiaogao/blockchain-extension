@@ -43,3 +43,4 @@ export const getTxType = async (txhash: string) => {
     else return false
 
 }
+

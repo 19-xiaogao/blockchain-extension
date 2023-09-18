@@ -1,6 +1,6 @@
 import { Storage } from "@plasmohq/storage"
 import { defaultNetwork } from "./constant"
-import type { IHDNodeWallet, IRPC } from "~types";
+import type { IContract, IHDNodeWallet, IRPC } from "~types";
 import cryptoJs from "crypto-js";
 function removePropertyFromArray(arr, property) {
     return arr.map(obj => {
@@ -196,4 +196,23 @@ export async function getTxRecordsStorage(): Promise<any[]> {
 
 export async function removeTxRecordsStorage() {
     return txRecordsStorage.remove(txRecords)
+}
+
+// 保存合约列表
+
+const contract = "CONTRACT"
+const contractStorage = new Storage({ area: "local" })
+
+export async function getContractStorage(): Promise<IContract[]> {
+    return contractStorage.get(contract)
+}
+
+export async function setContractStorage(contract) {
+    const contractList = await getContractStorage()
+    if (!contractList) return txRecordsStorage.set(txRecords, [contract])
+    txRecordsStorage.set(txRecords, [...contractList, contract])
+}
+
+export async function removeContractStorage() {
+    return contractStorage.remove(contract)
 }

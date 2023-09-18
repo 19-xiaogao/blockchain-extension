@@ -13,3 +13,10 @@ export interface IRPC {
 export interface IHDNodeWallet extends anfsJs.HDNodeWallet {
     name: string
 }
+
+export interface IContract {
+    name: string,
+    symbol: string,
+    contract: anfsJs.AddressLike,
+    decimals: number
+}

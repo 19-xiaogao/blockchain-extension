@@ -1,6 +1,7 @@
 export * from "./storage"
 export * from "./wallet"
 export * from "./transaction"
+export * from "./contract"
 
 export function closeNewTabPage() {
     // 获取当前标签页的信息
