@@ -5,21 +5,22 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { formatAddress } from "~utils";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
 import useWallet from "~hooks/useWallet";
+import useAddressTokenInfo from "~hooks/useTokenBalance";
 export default function SendTo() {
     const navigate = useNavigate()
     const location = useLocation();
-    const [amount, setAmount] = useState("");
     const wallet = useWallet()
+    const [amount, setAmount] = useState("");
     const toAddress = location.state?.address;
-
+    const contractAddress = location.state?.contractAddress;
     const [open, setOpen] = useState(false)
     const { balance } = useGetAddressBalance(wallet.address)
-
+    const { balance: tokenBalance, symbol } = useAddressTokenInfo(contractAddress, wallet.address)
     const handleAmount = e => {
         setAmount(e.target.value.trim())
     }
     const handleTrading = () => {
-        navigate(`/trading`, { state: { toAddress: toAddress, amount } })
+        navigate(`/trading`, { state: { toAddress: toAddress, amount, contractAddress, symbol } })
 
     }
 
@@ -35,10 +36,10 @@ export default function SendTo() {
     }, [])
 
     const handleBalanceClick = () => {
-        setAmount(String(balance))
+        setAmount(contractAddress ? String(tokenBalance) : String(balance))
     }
     return <div className="w-full h-full">
-        <NavBar backArrow={<ArrowLeftOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/sendTo')} />} onBack={back}
+        <NavBar backArrow={<ArrowLeftOutlined className=" text-font-gray text-xl mb-2" onClick={() => navigate('/sendTo', { state: { address: wallet.address, contractAddress } })} />} onBack={back}
             right={<CloseOutlined className=" text-font-gray text-xl  cursor-pointer" onClick={() => navigate('/')} />}>
             <span className=" text-white text-base">Send</span>
         </NavBar>
@@ -57,21 +58,22 @@ export default function SendTo() {
                         />
                         {/* <LoadingOutlined className=" text-orange" /> */}
                     </div>
-                    <div>
-                        <div onClick={() => navigate('/selectAsset')} className="text-white flex items-center  bg-black rounded-3xl w-auto p-1 justify-around  cursor-pointer">
+                    <div className=" flex flex-col  items-end">
+                        {/* onClick={() => navigate('/selectAsset')} */}
+                        <div className="text-white flex items-center  w-32 bg-black rounded-3xl p-1 justify-around  cursor-pointer">
                             <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-6 h-6" alt="" />
-                            <span>ETH</span>
-                            <ArrowDownOutlined />
+                            <span>{contractAddress ? symbol : 'ETH'}</span>
+                            {/* <ArrowDownOutlined /> */}
                         </div>
                         <div className="text-dark-gray mt-1 text-xs cursor-pointer" onClick={handleBalanceClick}>
-                            Balance:  {balance} ETH
+                            Balance:  {contractAddress ? tokenBalance + symbol : balance + 'ETH'}
                         </div>
                     </div>
                 </div>
             </div>
             <div className="mt-9">
                 <div className="text-lg  text-dark-gray" >Recipient</div>
-                <div onClick={() => navigate('/sendTo')} className=" mt-2 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+                <div onClick={() => navigate('/sendTo', { state: { address: wallet.address, contractAddress } })} className=" mt-2 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
                     <div className="flex items-center">
                         <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                         <div className="ml-3">

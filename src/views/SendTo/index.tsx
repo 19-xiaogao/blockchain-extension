@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { NavBar } from 'antd-mobile'
 import { CloseOutlined, PlusOutlined } from "@ant-design/icons"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { formatAddress } from "~utils";
 import AddAccount from "~components/AddAccount"
 import useGetWalletList from "~hooks/useGetWalletList";
@@ -15,6 +15,9 @@ export default function SendTo() {
     const [toAddress, setToAddr] = useState("")
     const { list } = useGetWalletList()
     const wallet = useWallet()
+    const location = useLocation();
+    const contractAddress = location.state?.contractAddress;
+
     const back = () => {
         console.log("click back icon");
     }
@@ -24,7 +27,7 @@ export default function SendTo() {
 
     const renderWalletList = useCallback(() => {
         const _list = list.filter(v => v.address != wallet.address)
-        return _list.map((v, index) => (<div key={index} onClick={() => navigate(`/send`, { state: { address: v.address } })} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
+        return _list.map((v, index) => (<div key={index} onClick={() => navigate(`/send`, { state: { address: v.address, contractAddress } })} className=" mt-4 bg-coin-bg rounded-2xl w-full p-3 flex items-center justify-between hover:bg-coin-hover cursor-pointer transition-all duration-100">
             <div className="flex items-center">
                 <img src="https://dv3jj1unlp2jl.cloudfront.net/128/color/eth.png" className="w-10 h-15" alt="" />
                 <div className="ml-3">
