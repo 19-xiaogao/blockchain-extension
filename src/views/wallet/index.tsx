@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import SaveMnemonic from "~components/saveMnemonic"
 import useWallet from "~hooks/useWallet";
 import useGetAddressBalance from "~hooks/useGetAddressBalance";
+import TokenList from "~components/TokenList"
 export default function WalletView() {
     const wallet = useWallet()
     const { balance, balanceLoading } = useGetAddressBalance(wallet.address)
@@ -46,6 +47,7 @@ export default function WalletView() {
                 </div>
                 <div className="text-base text-white">{balance} ETH</div>
             </div>
+            <TokenList />
             <div className="flex  justify-center mt-2">
                 <Button size="large" icon={<PlusOutlined />}
                     onClick={() => navigate('/addToken')}

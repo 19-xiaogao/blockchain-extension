@@ -29,3 +29,17 @@ export const getContractMsg = async (contractAddress: string) => {
         }
     }
 }
+// 查询用户的代币余额
+export const getERC20BalanceOf = async (contractAddress, accountAddress) => {
+    const provider = (await getCurrentJsonRpcProvider()).provider
+    const contract = new anfsJs.Contract(contractAddress, ERC20ABI, provider)
+
+    try {
+        const balance = await contract.balanceOf(accountAddress)
+        return anfsJs.formatEther(balance)
+    } catch (error) {
+        return 0
+    }
+
+
+}

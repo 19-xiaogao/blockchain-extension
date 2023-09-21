@@ -1,5 +1,6 @@
 import { Storage } from "@plasmohq/storage"
 import { defaultNetwork } from "./constant"
+import { uniqBy } from 'lodash'
 import type { IContract, IHDNodeWallet, IRPC } from "~types";
 import cryptoJs from "crypto-js";
 function removePropertyFromArray(arr, property) {
@@ -207,10 +208,10 @@ export async function getContractStorage(): Promise<IContract[]> {
     return contractStorage.get(contract)
 }
 
-export async function setContractStorage(contract) {
+export async function setContractStorage(_contract) {
     const contractList = await getContractStorage()
-    if (!contractList) return txRecordsStorage.set(txRecords, [contract])
-    txRecordsStorage.set(txRecords, [...contractList, contract])
+    if (!contractList) return txRecordsStorage.set(contract, [_contract])
+    txRecordsStorage.set(contract, uniqBy([...contractList, _contract], "contract"))
 }
 
 export async function removeContractStorage() {

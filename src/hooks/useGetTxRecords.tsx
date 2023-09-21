@@ -14,7 +14,7 @@ export const useGetTxRecords = () => {
         setLoading(true)
         const result = await getTxRecordsStorage()
         setLoading(false)
-        setList(result)
+        setList(!result ? [] : result)
     }
 
     return { list, loading }

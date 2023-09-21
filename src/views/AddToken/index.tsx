@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined, LoadingOutlined } from "@ant-design/icons"
-import { Button } from "antd"
+import { Button, message } from "antd"
 import { NavBar } from "antd-mobile"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -20,6 +20,7 @@ export default function AddToken() {
   const handleContinueClick = async () => {
     setLoading(true)
     await setContractStorage(contractMsg)
+    message.success('add success')
     setTimeout(() => {
       setLoading(false)
       navigate('/')
