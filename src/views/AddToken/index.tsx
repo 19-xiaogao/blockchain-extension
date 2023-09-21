@@ -1,18 +1,31 @@
 import { ArrowLeftOutlined } from "@ant-design/icons"
+import { Button } from "antd"
 import { NavBar } from "antd-mobile"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { setContractStorage } from "~background"
 import useContract from "~hooks/useContract"
 export default function AddToken() {
   const navigate = useNavigate()
   const [contractAddress, setContractAddress] = useState("")
   const contractMessage = useContract(contractAddress);
+  const [loading, setLoading] = useState(false);
   const back = () => {
     console.log("click back icon")
   }
   const handleChangeAddress = (e) => {
     setContractAddress(e.target.value)
   }
+
+  const handleContinueClick = async () => {
+    setLoading(true)
+    await setContractStorage(contractMessage)
+    setTimeout(() => {
+      setLoading(false)
+      navigate('/')
+    }, 1000);
+  }
+
   return (
     <div className="h-full w-full bg-dark relative">
       <NavBar
@@ -68,11 +81,13 @@ export default function AddToken() {
         </div>
       </div>
 
-      <div
-        className="h-12 ml-4 mr-4 mt-10 rounded-2xl text-center w-hull border-none  text-white bg-orange  hover:!text-white
+      <Button
+        onClick={handleContinueClick}
+        loading={loading}
+        className="h-12  mt-10 rounded-2xl text-center w-full border-none  text-white bg-orange  hover:!text-white
         flex items-center justify-center cursor-pointer text-base">
         <span> Continue</span>
-      </div>
+      </Button>
     </div>
   )
 }
