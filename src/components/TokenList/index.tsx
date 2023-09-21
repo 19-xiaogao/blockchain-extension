@@ -17,7 +17,7 @@ export default function TokenList() {
         })
         return tokenList
 
-    }, [tokenList, wallet.address])
+    }, [tokenList, wallet])
 
     const renderTokenList = useCallback(() => {
         return menuList.map((v, index) => {
@@ -30,7 +30,7 @@ export default function TokenList() {
                         {/* <div className="text-dark-gray">{balance}</div> */}
                     </div>
                 </div>
-                <div className="text-base text-white">{v.balance} {v.symbol}</div>
+                <div className=" text-sm text-white">{v.balance} {v.symbol}</div>
             </div>
         })
     }, [tokenList])
