@@ -12,9 +12,12 @@ export const useContract = (contractAddress: string) => {
     })
 
     useEffect(() => {
-        getContractMsg(contractAddress).then(res => {
-            setContractMsg(res)
-        })
+        if (anfsJs.isAddress(contractAddress)) {
+            getContractMsg(contractAddress).then(res => {
+                setContractMsg(res)
+            })
+        }
+
     }, [contractAddress])
 
     return contractMsg

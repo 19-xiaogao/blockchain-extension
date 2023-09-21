@@ -5,15 +5,27 @@ import * as anfsJs from "anfs-js"
 // 查询合约基本信息
 export const getContractMsg = async (contractAddress: string) => {
     const provider = (await getCurrentJsonRpcProvider()).provider
-    const contract = new anfsJs.Contract(contractAddress, ERC20ABI, provider)
-    const symbol = await contract.symbol()
-    const name = await contract.name()
-    const decimals = await contract.decimals()
 
-    return {
-        contract: contractAddress,
-        symbol,
-        name,
-        decimals
+    try {
+        const contract = new anfsJs.Contract(contractAddress, ERC20ABI, provider)
+
+        const name = await contract.name()
+        const symbol = await contract.symbol()
+        const decimals = await contract.decimals()
+        console.log(Number(decimals));
+
+        return {
+            contract: contractAddress,
+            symbol,
+            name,
+            decimals: Number(decimals)
+        }
+    } catch (error) {
+        return {
+            contract: contractAddress,
+            symbol: "",
+            name: "",
+            decimals: 0
+        }
     }
 }

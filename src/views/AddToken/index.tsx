@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom"
 import useContract from "~hooks/useContract"
 export default function AddToken() {
   const navigate = useNavigate()
-  const [contractAddress, setCOntractAddress] = useState("")
+  const [contractAddress, setContractAddress] = useState("")
   const contractMessage = useContract(contractAddress);
   const back = () => {
     console.log("click back icon")
+  }
+  const handleChangeAddress = (e) => {
+    setContractAddress(e.target.value)
   }
   return (
     <div className="h-full w-full bg-dark relative">
@@ -26,6 +29,8 @@ export default function AddToken() {
         <div>
           <div className="text-lg  text-dark-gray">Contract address</div>
           <input
+            value={contractAddress}
+            onChange={handleChangeAddress}
             type="text"
             className=" text-base appearance-none  hover:border-[#38383b] focus:border-[#656567]  bg-black text-white w-full h-14 block pl-3 pr-2 rounded-xl border border-gray-100 mt-2"
             placeholder="0x123"
@@ -35,6 +40,7 @@ export default function AddToken() {
           <div className="text-lg  text-dark-gray">Name</div>
           <input
             type="text"
+            value={contractMessage.name}
             className="text-base  appearance-none  hover:border-[#38383b] focus:border-[#656567] 
                  bg-black text-white w-full h-14 block pl-3 pr-2 rounded-xl border border-gray-100 mt-2"
             placeholder="Token"
@@ -44,6 +50,7 @@ export default function AddToken() {
           <div className="text-lg  text-dark-gray">Symbol</div>
           <input
             type="text"
+            value={contractMessage.symbol}
             className=" text-base appearance-none  hover:border-[#38383b] focus:border-[#656567] 
                  bg-black text-white w-full h-14 block pl-3 pr-2 rounded-xl border border-gray-100 mt-2"
             placeholder="TOK"
@@ -53,6 +60,7 @@ export default function AddToken() {
           <div className="text-lg  text-dark-gray">Decimals</div>
           <input
             type="number"
+            value={contractMessage.decimals}
             className="appearance-none  text-base hover:border-[#38383b] focus:border-[#656567] 
                  bg-black text-white w-full h-14 block pl-3 pr-2 rounded-xl border border-gray-100 mt-2"
             placeholder="18"
