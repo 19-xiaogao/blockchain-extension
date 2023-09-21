@@ -10,17 +10,20 @@ export const useContract = (contractAddress: string) => {
         decimals: 0,
         symbol: ""
     })
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (anfsJs.isAddress(contractAddress)) {
+            setLoading(true)
             getContractMsg(contractAddress).then(res => {
                 setContractMsg(res)
+                setLoading(false)
             })
         }
 
     }, [contractAddress])
 
-    return contractMsg
+    return { contractMsg, loading }
 
 }
 
