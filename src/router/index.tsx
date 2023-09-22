@@ -71,14 +71,14 @@ const router = createHashRouter([
         path: "/",
         element: <WalletView />,
       },
-      {
-        path: "/nfts",
-        element: <NftsView />,
-      },
-      {
-        path: "/swap",
-        element: <SwapView />,
-      },
+      // {
+      //   path: "/nfts",
+      //   element: <NftsView />,
+      // },
+      // {
+      //   path: "/swap",
+      //   element: <SwapView />,
+      // },
       {
         path: "/records",
         element: <RecordsView />,

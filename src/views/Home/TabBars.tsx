@@ -8,15 +8,15 @@ const tabs = [
         icon: <WalletOutlined />,
         url: "/",
     },
-    {
-        icon: <AppstoreOutlined />,
-        url: "/nfts",
-    },
-    {
-        url: "/swap",
-        icon: <SyncOutlined />,
+    // {
+    //     icon: <AppstoreOutlined />,
+    //     url: "/nfts",
+    // },
+    // {
+    //     url: "/swap",
+    //     icon: <SyncOutlined />,
 
-    },
+    // },
     {
         url: "/records",
         icon: <MenuOutlined />,
